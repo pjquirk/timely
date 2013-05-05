@@ -1,7 +1,8 @@
 ﻿using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Timely.Common.Installer;
 
-namespace Timely.Main.Initialization.Installer
+namespace Timely.Models
 {
     public class ModelsAssemblyInstaller : AssemblyInstallerBase
     {

@@ -66,10 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Initialization\Bootstrapper.cs" />
-    <Compile Include="Initialization\Installer\AssemblyInstallerBase.cs" />
-    <Compile Include="Initialization\Installer\ViewModelsAssemblyInstaller.cs" />
-    <Compile Include="Initialization\Installer\ViewsAssemblyInstaller.cs" />
-    <Compile Include="Initialization\Installer\ModelsAssemblyInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +92,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Timely.Models\Timely.Models.csproj">
+      <Project>{dea4b1c7-b800-4333-b479-3cbb461ed251}</Project>
+      <Name>Timely.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Timely.ViewModels\Timely.ViewModels.csproj">
+      <Project>{1fb4f26f-0780-40a2-aa5e-7950558467ff}</Project>
+      <Name>Timely.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Timely.Views\Timely.Views.csproj">
+      <Project>{dd6de01a-acb2-4221-ab75-b00af795d962}</Project>
+      <Name>Timely.Views</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

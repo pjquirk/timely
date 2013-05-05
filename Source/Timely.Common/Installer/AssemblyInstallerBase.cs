@@ -3,7 +3,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Timely.Main.Initialization.Installer
+namespace Timely.Common.Installer
 {
     public abstract class AssemblyInstallerBase : IWindsorInstaller
     {
@@ -14,9 +14,9 @@ namespace Timely.Main.Initialization.Installer
             RegisterAssemblyClasses(container);
         }
 
-        private static void RegisterAssemblyClasses(IWindsorContainer container)
+        private void RegisterAssemblyClasses(IWindsorContainer container)
         {
-            container.Register(Classes.FromThisAssembly().Pick().WithService.DefaultInterfaces().LifestyleTransient());
+            container.Register(Classes.FromAssemblyContaining(this.GetType()).Pick().WithService.DefaultInterfaces().LifestyleTransient());
         }
 
         protected abstract void RegisterFactories(IWindsorContainer container, IConfigurationStore store);

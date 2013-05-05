@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DEA4B1C7-B800-4333-B479-3CBB461ED251}</ProjectGuid>
+    <ProjectGuid>{16DDEA0B-6C33-4E54-A0C1-05B08059B924}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Timely.Models</RootNamespace>
-    <AssemblyName>Timely.Models</AssemblyName>
+    <RootNamespace>Timely.Common</RootNamespace>
+    <AssemblyName>Timely.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,14 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelsAssemblyInstaller.cs" />
+    <Compile Include="Installer\AssemblyInstallerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Timely.Common\Timely.Common.csproj">
-      <Project>{16ddea0b-6c33-4e54-a0c1-05b08059b924}</Project>
-      <Name>Timely.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
