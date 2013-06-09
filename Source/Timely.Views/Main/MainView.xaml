@@ -4,7 +4,30 @@
         xmlns:srcBase="clr-namespace:Timely.Views.Base"
         Title="Timely" Height="263" Width="467">
     <Grid>
-        <DockPanel>            
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Settings" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="E_xit" />
+            </MenuItem>
+            <MenuItem Header="_Tasks">
+                <MenuItem Header="New Task..." IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Start" IsEnabled="False" />
+                <MenuItem Header="Stop" IsEnabled="False" />
+                <MenuItem Header="Edit..." IsEnabled="False" />
+                <MenuItem Header="Delete" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Import from TFS" IsEnabled="False" />
+                <MenuItem Header="Previous Day Summary..." IsEnabled="False" />
+            </MenuItem>
+        </Menu>
+        <Border Grid.Row="1" BorderThickness="1">
+            <TextBlock Text="Tasks" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </Border>
     </Grid>
 </srcBase:WindowBase>
