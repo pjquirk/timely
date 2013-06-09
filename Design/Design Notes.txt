@@ -1,0 +1,61 @@
+Phase 1:
+- I want to be able to keep track of time spent throughout the day
+- I will use individual tasks, with totals for day and all-time
+- I will give each task a name
+- I will manually start and stop a task, like a chess timer
+- The app will keep track of blocks of time a task was worked on
+- The app will reset all counters at the start of the day
+
+Phase 2:
+- I want to be able to modify time spent on a task
+  - How do you modify it?  Do you change a timeblock or just apply a modification to the task?
+- I want to be able to group tasks into categories (Infra, Dev)
+  - Need a tree table view? Or just use groups in a list view?  
+- I want the app to track idle time
+- I want to be notified when the timer has been idle for N minutes
+- I want a summary of the previous day's tasks (totals only)
+
+Phase 3:
+- I want a view, like a timeline, that shows when I worked on each task
+- I want to import tasks from TFS
+- I want the app to monitor active windows and optional display another timeline with this info
+
+- Main Window
+  - Shows: 
+    - List of tasks, grouped by category
+    - Start of Day (9:05a)
+    - Idle Time (1.35h)
+    - Total Time (by category)
+      - Dev: 3.25h
+      - Infra: 2.6h
+    - Window Title has active task name in it
+  - Menu Bar:
+    - File      
+      - Settings...
+      - Exit
+    - Tasks
+      - New Task... (Ctrl+N)
+      - Start
+      - Stop
+      - Edit...
+      - Delete
+      - Import from TFS...
+      - Previous Day Summary...
+    
+      
+
+====================
+Models:
+  - Task : Entity
+    - Guid Id { get; set; }
+    - string Name { get; set; }
+    - string Category { get; set; }    
+  - TimeBlock : Entity
+    - Guid Id { get; set; }
+    - DateTime Start { get; set; }
+    - DateTime End { get; set; }
+    - TimeSpan Total { get { End - Start; } }
+    - Guid TaskId { get; set; }
+  - Repository<T> where T : Entity
+    - T Get(Guid Id)
+    - void Add(T entity)
