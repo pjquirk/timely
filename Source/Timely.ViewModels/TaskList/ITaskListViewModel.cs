@@ -7,9 +7,12 @@
 namespace Timely.ViewModels.TaskList
 {
     using System.Collections.ObjectModel;
+    using Timely.ViewModels.Base;
 
-    public interface ITaskListViewModel
+    public interface ITaskListViewModel : IViewModel
     {
         ObservableCollection<ITaskListItemViewModel> Items { get; }
+
+        ITaskListItemViewModel SelectedItem { get; set; }
     }
 }

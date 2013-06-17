@@ -1,17 +1,17 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="MainView.xaml.cs" company="LexisNexis">
+// <copyright file="NewTaskView.xaml.cs" company="LexisNexis">
 //   Copyright 2012 LexisNexis. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Timely.Views.Main
+namespace Timely.Views.NewTask
 {
     using Timely.ViewModels.Main;
     using Timely.Views.Base;
 
-    public partial class MainView : WindowBase, IMainView
+    public partial class NewTaskView : WindowBase, IMainView
     {
-        public MainView(IMainViewModel mainViewModel)
+        public NewTaskView(IMainViewModel mainViewModel)
             : base(mainViewModel)
         {
             InitializeComponent();

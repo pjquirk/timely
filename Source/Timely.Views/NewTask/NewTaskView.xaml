@@ -1,0 +1,24 @@
+﻿<srcBase:WindowBase x:Class="Timely.Views.NewTask.NewTaskView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:srcBase="clr-namespace:Timely.Views.Base" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:sampleData="clr-namespace:Timely.ViewModels.Main.SampleData;assembly=Timely.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" 
+        d:DataContext="{d:DesignInstance Type=sampleData:SampleMainViewModel, IsDesignTimeCreatable=True}"
+        Title="Create New task"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <Label Content="_Enter a description of the task:"/>
+            <TextBox Width="350" Margin="7,0,7,0"></TextBox>
+        
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Content="_OK" Width="70" Margin="0,0,7,0"/>
+                <Button Content="_Cancel" Width="70"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</srcBase:WindowBase>

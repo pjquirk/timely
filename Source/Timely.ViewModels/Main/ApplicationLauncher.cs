@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Timely.ViewModels.Base;
+﻿// -----------------------------------------------------------------------
+// <copyright file="ApplicationLauncher.cs" company="LexisNexis">
+//   Copyright 2012 LexisNexis. All Rights Reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Timely.ViewModels.Main
 {
+    using Timely.ViewModels.Base;
+
     public class ApplicationLauncher : IApplicationLauncher
     {
         IViewFactory<IMainView> mainViewFactory;

@@ -6,8 +6,14 @@
 
 namespace Timely.ViewModels.TaskList
 {
-    public interface ITaskListItemViewModel
+    using Timely.ViewModels.Base;
+
+    public interface ITaskListItemViewModel : IViewModel
     {
         string Header { get; }
+
+        string TodayTime { get; }
+
+        string TotalTime { get; }
     }
 }

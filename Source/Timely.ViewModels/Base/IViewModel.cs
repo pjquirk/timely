@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -----------------------------------------------------------------------
+// <copyright file="IViewModel.cs" company="LexisNexis">
+//   Copyright 2012 LexisNexis. All Rights Reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Timely.ViewModels.Base
 {
-    public interface IViewModel
+    using System.ComponentModel;
+
+    public interface IViewModel : INotifyPropertyChanged
     {
     }
 }

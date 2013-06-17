@@ -20,7 +20,10 @@
                 </Style.Triggers>
             </Style>
         </Grid.Resources>
-        <ListView ItemsSource="{Binding Items}" AlternationCount="2" ItemContainerStyle="{StaticResource alternatingStyle}">
+        <ListView ItemsSource="{Binding Items}" 
+                  AlternationCount="2" 
+                  ItemContainerStyle="{StaticResource alternatingStyle}"
+                  SelectedItem="{Binding SelectedItem}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="">
@@ -40,14 +43,14 @@
                     <GridViewColumn Header="Today">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="0.1" />
+                                <TextBlock Text="{Binding TodayTime}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Total">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="0.2" />
+                                <TextBlock Text="{Binding TotalTime}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

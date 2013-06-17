@@ -6,8 +6,14 @@
 
 namespace Timely.ViewModels.TaskList.SampleData
 {
-    public class SampleTaskListItemViewModel : ITaskListItemViewModel
+    using GalaSoft.MvvmLight;
+
+    public class SampleTaskListItemViewModel : ViewModelBase, ITaskListItemViewModel
     {
         public string Header { get; set; }
+        
+        public string TodayTime { get; set; }
+        
+        public string TotalTime { get; set; }
     }
 }
