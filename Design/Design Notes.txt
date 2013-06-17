@@ -9,6 +9,7 @@ Phase 1:
 Phase 2:
 - I want to be able to modify time spent on a task
   - How do you modify it?  Do you change a timeblock or just apply a modification to the task?
+	- Add an extra "modification" block
 - I want to be able to group tasks into categories (Infra, Dev)
   - Need a tree table view? Or just use groups in a list view?  
 - I want the app to track idle time
