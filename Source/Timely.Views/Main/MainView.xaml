@@ -26,7 +26,7 @@
                 <MenuItem Header="Start" IsEnabled="False" />
                 <MenuItem Header="Stop" IsEnabled="False" />
                 <MenuItem Header="Edit..." IsEnabled="False" />
-                <MenuItem Header="Delete" IsEnabled="False" />
+                <MenuItem Header="Delete" Command="{Binding TaskListViewModel.DeleteSelectedTaskCommand}" />
                 <Separator />
                 <MenuItem Header="Import from TFS" IsEnabled="False" />
                 <MenuItem Header="Previous Day Summary..." IsEnabled="False" />

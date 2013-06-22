@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EntityIdEventArgs.cs" />
     <Compile Include="Common\EntityCreator.cs" />
     <Compile Include="Common\EntityEventArgs.cs" />
     <Compile Include="Common\EntityModel.cs" />

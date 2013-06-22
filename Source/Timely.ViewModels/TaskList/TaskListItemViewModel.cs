@@ -1,5 +1,6 @@
 ﻿namespace Timely.ViewModels.TaskList
 {
+    using System;
     using GalaSoft.MvvmLight;
     using Timely.Models.Entities;
 
@@ -15,6 +16,11 @@
         public string Header
         {
             get { return task.Description; }
+        }
+
+        public Guid Id
+        {
+            get { return task.Id; }
         }
 
         public string TodayTime { get; private set; }

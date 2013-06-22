@@ -1,16 +1,13 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="ITaskListItemViewModel.cs" company="LexisNexis">
-//   Copyright 2012 LexisNexis. All Rights Reserved.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Timely.ViewModels.TaskList
+﻿namespace Timely.ViewModels.TaskList
 {
+    using System;
     using Timely.ViewModels.Base;
 
     public interface ITaskListItemViewModel : IViewModel
     {
         string Header { get; }
+    
+        Guid Id { get; }
 
         string TodayTime { get; }
 

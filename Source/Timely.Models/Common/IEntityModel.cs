@@ -9,6 +9,8 @@
     {
         event EventHandler<EntityEventArgs<T>> EntityAdded;
 
+        event EventHandler<EntityIdEventArgs> EntityDeleted;
+
         void Delete(Guid id);
 
         T Get(Guid id);

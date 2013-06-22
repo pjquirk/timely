@@ -14,6 +14,8 @@
         }
 
         public event EventHandler<EntityEventArgs<T>> EntityAdded;
+        
+        public event EventHandler<EntityIdEventArgs> EntityDeleted;
 
         protected IEntityCreator<T> EntityCreator { get; private set; }
 
@@ -21,7 +23,8 @@
 
         public void Delete(Guid id)
         {
-            EntityDictionary.Remove(id);
+            if (EntityDictionary.Remove(id))
+                OnEntityDeleted(id);
         }
 
         public T Get(Guid id)
@@ -44,6 +47,13 @@
             EventHandler<EntityEventArgs<T>> handler = EntityAdded;
             if (handler != null)
                 handler(this, new EntityEventArgs<T>(entity));
+        }
+
+        protected virtual void OnEntityDeleted(Guid id)
+        {
+            EventHandler<EntityIdEventArgs> handler = EntityDeleted;
+            if (handler != null)
+                handler(this, new EntityIdEventArgs(id));
         }
     }
 }

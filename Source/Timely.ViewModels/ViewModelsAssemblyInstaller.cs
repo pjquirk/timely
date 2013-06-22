@@ -13,12 +13,14 @@ namespace Timely.ViewModels
     using Timely.Common.Installer;
     using Timely.ViewModels.Base;
     using Timely.ViewModels.TaskList;
+    using Timely.ViewModels.TaskList.Commands;
 
     public class ViewModelsAssemblyInstaller : AssemblyInstallerBase
     {
         protected override void RegisterFactories(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For(typeof(IViewFactory<>)).AsFactory());
+            container.Register(Component.For(typeof(ISelectedItemCommandFactory<>)).AsFactory());
             container.Register(Component.For<ITaskListItemViewModelFactory>().AsFactory());
         }
 
