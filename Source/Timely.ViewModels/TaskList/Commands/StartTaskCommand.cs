@@ -19,8 +19,7 @@
 
         public override bool CanExecute(object parameter)
         {
-            // TODO: And not started
-            return base.CanExecute(parameter);
+            return base.CanExecute(parameter) && SelectedItem.Id != activeTaskController.ActiveTaskId;
         }
     }
 }
