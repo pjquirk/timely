@@ -8,6 +8,8 @@
         public string Header { get; set; }
 
         public Guid Id { get; private set; }
+        
+        public bool IsActive { get; set; }
 
         public string TodayTime { get; set; }
 

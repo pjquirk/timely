@@ -6,8 +6,10 @@
     public interface ITaskListItemViewModel : IViewModel
     {
         string Header { get; }
-    
+
         Guid Id { get; }
+     
+        bool IsActive { get; set; }
 
         string TodayTime { get; }
 

@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sampleData="clr-namespace:Timely.ViewModels.TaskList.SampleData;assembly=Timely.ViewModels"
+             xmlns:taskListView="clr-namespace:Timely.Views.TaskListView"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=sampleData:SampleTaskListViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.Resources>
+            <taskListView:ActiveTaskIndicatorValueConverter x:Key="activeTaskIndicatorValueConverter" />
             <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
                 <Style.Triggers>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="1">
@@ -34,7 +36,7 @@
                     <GridViewColumn Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text=">" />
+                                <TextBlock Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

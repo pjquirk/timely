@@ -8,10 +8,12 @@
     using Timely.Models.Common;
     using Timely.Models.Entities;
     using Timely.Models.Models;
+    using Timely.ViewModels.Common;
     using Timely.ViewModels.TaskList.Commands;
 
     public class TaskListViewModel : ViewModelBase, ITaskListViewModel
     {
+        readonly IActiveTaskController activeTaskController;
         readonly ITaskListItemViewModelFactory taskListItemViewModelFactory;
         readonly ITasksModel tasksModel;
         ITaskListItemViewModel selectedItem;
@@ -19,6 +21,7 @@
         public TaskListViewModel(
             ITasksModel tasksModel,
             ITaskListItemViewModelFactory taskListItemViewModelFactory,
+            IActiveTaskController activeTaskController,
             ISelectedItemCommandFactory<IStartTaskCommand> startTaskCommandFactory,
             ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
             ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
@@ -26,12 +29,14 @@
         {
             this.tasksModel = tasksModel;
             this.taskListItemViewModelFactory = taskListItemViewModelFactory;
+            this.activeTaskController = activeTaskController;
             DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
             StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
             StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
             EditSelectedTaskCommand = editTaskCommandFactory.Create(this);
             PopulateItems();
             SubscribeToTaskModelEvents();
+            SubscribeToActiveTaskControllerEvents();
         }
 
         public event EventHandler SelectedItemChanged;
@@ -69,6 +74,12 @@
             return taskListItemViewModelFactory.Create(task);
         }
 
+        void HandleActiveTaskIdChanged(object sender, EntityIdEventArgs e)
+        {
+            foreach (var item in Items)
+                item.IsActive = (item.Id == e.Id);
+        }
+
         void HandleTaskAdded(object sender, EntityEventArgs<Task> e)
         {
             Items.Add(CreateItemViewModel(e.Entity));
@@ -84,6 +95,11 @@
         void PopulateItems()
         {
             Items = new ObservableCollection<ITaskListItemViewModel>(tasksModel.GetAll().Select(CreateItemViewModel));
+        }
+
+        void SubscribeToActiveTaskControllerEvents()
+        {
+            activeTaskController.ActiveTaskIdChanged += HandleActiveTaskIdChanged;
         }
 
         void SubscribeToTaskModelEvents()

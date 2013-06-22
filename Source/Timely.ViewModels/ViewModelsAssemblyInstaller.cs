@@ -12,6 +12,7 @@ namespace Timely.ViewModels
     using Castle.Windsor;
     using Timely.Common.Installer;
     using Timely.ViewModels.Base;
+    using Timely.ViewModels.Common;
     using Timely.ViewModels.TaskList;
     using Timely.ViewModels.TaskList.Commands;
 
@@ -26,6 +27,7 @@ namespace Timely.ViewModels
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)
         {
+            container.Register(Component.For<IActiveTaskController>().ImplementedBy<ActiveTaskController>().LifeStyle.Singleton);
         }
     }
 }

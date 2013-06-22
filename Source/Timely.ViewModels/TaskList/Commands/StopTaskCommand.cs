@@ -1,15 +1,20 @@
 ﻿namespace Timely.ViewModels.TaskList.Commands
 {
+    using Timely.ViewModels.Common;
+
     public class StopTaskCommand : SelectedItemCommand, IStopTaskCommand
     {
-        public StopTaskCommand(ITaskListViewModel taskListViewModel)
+        readonly IActiveTaskController activeTaskController;
+
+        public StopTaskCommand(ITaskListViewModel taskListViewModel, IActiveTaskController activeTaskController)
             : base(taskListViewModel)
         {
+            this.activeTaskController = activeTaskController;
         }
 
         public override void Execute(object parameter)
         {
-            // TODO
+            activeTaskController.Stop();
         }
 
         public override bool CanExecute(object parameter)

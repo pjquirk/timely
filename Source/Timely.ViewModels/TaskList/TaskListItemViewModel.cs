@@ -7,6 +7,7 @@
     public class TaskListItemViewModel : ViewModelBase, ITaskListItemViewModel
     {
         readonly Task task;
+        bool isActive;
 
         public TaskListItemViewModel(Task task)
         {
@@ -21,6 +22,16 @@
         public Guid Id
         {
             get { return task.Id; }
+        }
+
+        public bool IsActive
+        {
+            get { return isActive; }
+            set
+            {
+                isActive = value;
+                RaisePropertyChanged(() => IsActive);
+            }
         }
 
         public string TodayTime { get; private set; }
