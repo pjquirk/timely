@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="ITaskListViewModel.cs" company="LexisNexis">
-//   Copyright 2012 LexisNexis. All Rights Reserved.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Timely.ViewModels.TaskList
+﻿namespace Timely.ViewModels.TaskList
 {
     using System;
     using System.Collections.ObjectModel;
@@ -15,10 +9,16 @@ namespace Timely.ViewModels.TaskList
     {
         event EventHandler SelectedItemChanged;
 
+        ICommand DeleteSelectedTaskCommand { get; }
+        
+        ICommand EditSelectedTaskCommand { get; }
+
         ObservableCollection<ITaskListItemViewModel> Items { get; }
 
         ITaskListItemViewModel SelectedItem { get; set; }
 
-        ICommand DeleteSelectedTaskCommand { get; }
+        ICommand StartSelectedTaskCommand { get; }
+
+        ICommand StopSelectedTaskCommand { get; }
     }
 }

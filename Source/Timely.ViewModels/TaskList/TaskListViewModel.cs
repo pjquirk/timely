@@ -16,11 +16,20 @@
         readonly ITasksModel tasksModel;
         ITaskListItemViewModel selectedItem;
 
-        public TaskListViewModel(ITasksModel tasksModel, ITaskListItemViewModelFactory taskListItemViewModelFactory, ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
+        public TaskListViewModel(
+            ITasksModel tasksModel,
+            ITaskListItemViewModelFactory taskListItemViewModelFactory,
+            ISelectedItemCommandFactory<IStartTaskCommand> startTaskCommandFactory,
+            ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
+            ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
+            ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
         {
             this.tasksModel = tasksModel;
             this.taskListItemViewModelFactory = taskListItemViewModelFactory;
             DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
+            StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
+            StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
+            EditSelectedTaskCommand = editTaskCommandFactory.Create(this);
             PopulateItems();
             SubscribeToTaskModelEvents();
         }
@@ -28,6 +37,8 @@
         public event EventHandler SelectedItemChanged;
 
         public ICommand DeleteSelectedTaskCommand { get; private set; }
+
+        public ICommand EditSelectedTaskCommand { get; private set; }
 
         public ObservableCollection<ITaskListItemViewModel> Items { get; private set; }
 
@@ -41,6 +52,10 @@
                 OnSelectedItemChanged();
             }
         }
+
+        public ICommand StartSelectedTaskCommand { get; private set; }
+
+        public ICommand StopSelectedTaskCommand { get; private set; }
 
         protected virtual void OnSelectedItemChanged()
         {

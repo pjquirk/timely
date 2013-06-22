@@ -23,9 +23,9 @@
             <MenuItem Header="_Tasks">
                 <MenuItem Header="New Task..." Command="{Binding NewTaskCommand}" />
                 <Separator />
-                <MenuItem Header="Start" IsEnabled="False" />
-                <MenuItem Header="Stop" IsEnabled="False" />
-                <MenuItem Header="Edit..." IsEnabled="False" />
+                <MenuItem Header="Start" Command="{Binding TaskListViewModel.StartSelectedTaskCommand}" />
+                <MenuItem Header="Stop" Command="{Binding TaskListViewModel.StopSelectedTaskCommand}" />
+                <MenuItem Header="Edit..." Command="{Binding TaskListViewModel.EditSelectedTaskCommand}" />
                 <MenuItem Header="Delete" Command="{Binding TaskListViewModel.DeleteSelectedTaskCommand}" />
                 <Separator />
                 <MenuItem Header="Import from TFS" IsEnabled="False" />

@@ -64,10 +64,16 @@
     <Compile Include="NewTask\SampleData\SampleNewTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskList\Commands\DeleteTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\EditTaskCommand.cs" />
     <Compile Include="TaskList\Commands\IDeleteTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\IEditTaskCommand.cs" />
     <Compile Include="TaskList\Commands\ISelectedItemCommand.cs" />
     <Compile Include="TaskList\Commands\ISelectedItemCommandFactory.cs" />
+    <Compile Include="TaskList\Commands\IStartTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\IStopTaskCommand.cs" />
     <Compile Include="TaskList\Commands\SelectedItemCommand.cs" />
+    <Compile Include="TaskList\Commands\StartTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\StopTaskCommand.cs" />
     <Compile Include="TaskList\ITaskListItemViewModel.cs" />
     <Compile Include="TaskList\ITaskListItemViewModelFactory.cs" />
     <Compile Include="TaskList\ITaskListViewModel.cs" />
