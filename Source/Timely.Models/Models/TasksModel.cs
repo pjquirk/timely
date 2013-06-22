@@ -15,6 +15,7 @@
         {
             Task task = CreateEntity(description);
             AddToStore(task);
+            OnEntityAdded(task);
             return task;
         }
 

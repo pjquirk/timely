@@ -13,8 +13,16 @@
             EntityCreator = entityCreator;
         }
 
+        public event EventHandler<EntityEventArgs<T>> EntityAdded;
+
         protected IEntityCreator<T> EntityCreator { get; private set; }
+
         protected IDictionary<Guid, T> EntityDictionary { get; private set; }
+
+        public void Delete(Guid id)
+        {
+            EntityDictionary.Remove(id);
+        }
 
         public T Get(Guid id)
         {
@@ -29,6 +37,13 @@
         protected void AddToStore(T entity)
         {
             EntityDictionary.Add(entity.Id, entity);
+        }
+
+        protected virtual void OnEntityAdded(T entity)
+        {
+            EventHandler<EntityEventArgs<T>> handler = EntityAdded;
+            if (handler != null)
+                handler(this, new EntityEventArgs<T>(entity));
         }
     }
 }
