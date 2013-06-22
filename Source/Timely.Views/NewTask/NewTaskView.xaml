@@ -3,21 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:srcBase="clr-namespace:Timely.Views.Base" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:sampleData="clr-namespace:Timely.ViewModels.Main.SampleData;assembly=Timely.ViewModels"
+        xmlns:sampleData="clr-namespace:Timely.ViewModels.NewTask.SampleData;assembly=Timely.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
         mc:Ignorable="d" 
-        d:DataContext="{d:DesignInstance Type=sampleData:SampleMainViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=sampleData:SampleNewTaskViewModel, IsDesignTimeCreatable=True}"
         Title="Create New task"
         SizeToContent="WidthAndHeight"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" 
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterOwner"
+        attachedBehaviors:DialogCloser.DialogResult="{Binding DialogResult}">
     <Grid>
-        <StackPanel>
-            <Label Content="_Enter a description of the task:"/>
-            <TextBox Width="350" Margin="7,0,7,0"></TextBox>
+        <StackPanel FocusManager.IsFocusScope="True">
+            <Label Content="_Enter a description of the task:" Target="description"/>
+            <TextBox Text="{Binding Description, Mode=TwoWay}" Width="350" Margin="7,0,7,0" x:Name="description"/>
         
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button Content="_OK" Width="70" Margin="0,0,7,0"/>
-                <Button Content="_Cancel" Width="70"/>
+                <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding CreateTaskCommand}"/>
+                <Button IsCancel="True" Content="_Cancel" Width="70"/>
             </StackPanel>
         </StackPanel>
     </Grid>

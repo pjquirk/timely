@@ -44,6 +44,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\ClosableViewModel.cs" />
+    <Compile Include="Base\CommandBase.cs" />
+    <Compile Include="Base\IClosableViewModel.cs" />
     <Compile Include="Base\IView.cs" />
     <Compile Include="Base\IViewFactory.cs" />
     <Compile Include="Base\IViewModel.cs" />
@@ -53,6 +56,12 @@
     <Compile Include="Main\IMainViewModel.cs" />
     <Compile Include="Main\MainViewModel.cs" />
     <Compile Include="Main\SampleData\SampleMainViewModel.cs" />
+    <Compile Include="NewTask\INewTaskCommand.cs" />
+    <Compile Include="NewTask\INewTaskView.cs" />
+    <Compile Include="NewTask\INewTaskViewModel.cs" />
+    <Compile Include="NewTask\NewTaskCommand.cs" />
+    <Compile Include="NewTask\NewTaskViewModel.cs" />
+    <Compile Include="NewTask\SampleData\SampleNewTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskList\ITaskListItemViewModel.cs" />
     <Compile Include="TaskList\ITaskListViewModel.cs" />

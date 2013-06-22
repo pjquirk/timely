@@ -21,7 +21,7 @@
                 <MenuItem Header="E_xit" />
             </MenuItem>
             <MenuItem Header="_Tasks">
-                <MenuItem Header="New Task..." IsEnabled="False" Command="{Binding NewTaskCommand}" />
+                <MenuItem Header="New Task..." Command="{Binding NewTaskCommand}" />
                 <Separator />
                 <MenuItem Header="Start" IsEnabled="False" />
                 <MenuItem Header="Stop" IsEnabled="False" />

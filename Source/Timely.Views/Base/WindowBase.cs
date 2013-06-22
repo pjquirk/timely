@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Timely.ViewModels.Base;
-
-namespace Timely.Views.Base
+﻿namespace Timely.Views.Base
 {
+    using System.Windows;
+    using Timely.ViewModels.Base;
+
     public abstract class WindowBase : Window
     {
         protected WindowBase(IViewModel viewModel)
