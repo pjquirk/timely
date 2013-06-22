@@ -12,12 +12,14 @@ namespace Timely.ViewModels
     using Castle.Windsor;
     using Timely.Common.Installer;
     using Timely.ViewModels.Base;
+    using Timely.ViewModels.TaskList;
 
     public class ViewModelsAssemblyInstaller : AssemblyInstallerBase
     {
         protected override void RegisterFactories(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For(typeof(IViewFactory<>)).AsFactory());
+            container.Register(Component.For<ITaskListItemViewModelFactory>().AsFactory());
         }
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)

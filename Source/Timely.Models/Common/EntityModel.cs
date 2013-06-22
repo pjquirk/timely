@@ -21,6 +21,11 @@
             return EntityDictionary[id];
         }
 
+        public IEnumerable<T> GetAll()
+        {
+            return EntityDictionary.Values;
+        }
+
         protected void AddToStore(T entity)
         {
             EntityDictionary.Add(entity.Id, entity);

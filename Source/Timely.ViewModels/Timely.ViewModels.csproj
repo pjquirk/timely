@@ -64,9 +64,12 @@
     <Compile Include="NewTask\SampleData\SampleNewTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskList\ITaskListItemViewModel.cs" />
+    <Compile Include="TaskList\ITaskListItemViewModelFactory.cs" />
     <Compile Include="TaskList\ITaskListViewModel.cs" />
     <Compile Include="TaskList\SampleData\SampleTaskListItemViewModel.cs" />
     <Compile Include="TaskList\SampleData\SampleTaskListViewModel.cs" />
+    <Compile Include="TaskList\TaskListItemViewModel.cs" />
+    <Compile Include="TaskList\TaskListViewModel.cs" />
     <Compile Include="ViewModelsAssemblyInstaller.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,9 +7,10 @@
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
-        public MainViewModel(INewTaskCommand newTaskCommand)
+        public MainViewModel(INewTaskCommand newTaskCommand, ITaskListViewModel taskListViewModel)
         {
             NewTaskCommand = newTaskCommand;
+            TaskListViewModel = taskListViewModel;
         }
 
         public ICommand NewTaskCommand { get; private set; }

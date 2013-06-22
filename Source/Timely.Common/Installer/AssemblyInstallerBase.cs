@@ -16,7 +16,9 @@ namespace Timely.Common.Installer
 
         private void RegisterAssemblyClasses(IWindsorContainer container)
         {
-            container.Register(Classes.FromAssemblyContaining(this.GetType()).Pick().WithService.DefaultInterfaces().LifestyleTransient());
+            BasedOnDescriptor descriptor =
+                Classes.FromAssemblyContaining(this.GetType()).Pick().WithService.DefaultInterfaces().LifestyleTransient().If(t => !t.Namespace.Contains("Sample"));
+            container.Register(descriptor);
         }
 
         protected abstract void RegisterFactories(IWindsorContainer container, IConfigurationStore store);
