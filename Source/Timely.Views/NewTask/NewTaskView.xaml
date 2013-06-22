@@ -18,7 +18,7 @@
     <Grid>
         <StackPanel FocusManager.IsFocusScope="True">
             <Label Content="_Enter a description of the task:" Target="description"/>
-            <TextBox Text="{Binding Description, Mode=TwoWay}" Width="350" Margin="7,0,7,0" x:Name="description"/>
+            <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="350" Margin="7,0,7,0" x:Name="description"/>
         
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding CreateTaskCommand}"/>

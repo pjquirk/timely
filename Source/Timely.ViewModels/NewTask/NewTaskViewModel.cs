@@ -2,12 +2,16 @@
 {
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
+    using Timely.Models.Models;
     using Timely.ViewModels.Base;
 
     public class NewTaskViewModel : ClosableViewModel, INewTaskViewModel
     {
-        public NewTaskViewModel()
+        readonly ITasksModel tasksModel;
+
+        public NewTaskViewModel(ITasksModel tasksModel)
         {
+            this.tasksModel = tasksModel;
             CreateTaskCommand = new RelayCommand(CreateTaskExecute);
         }
 
@@ -17,7 +21,7 @@
 
         void CreateTaskExecute()
         {
-            // TODO: Create the task
+            tasksModel.Add(Description);
             Close();
         }
     }

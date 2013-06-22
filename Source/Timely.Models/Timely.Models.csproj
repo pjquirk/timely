@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,8 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EntityCreator.cs" />
+    <Compile Include="Common\EntityModel.cs" />
+    <Compile Include="Common\IEntityCreator.cs" />
+    <Compile Include="Common\IEntityModel.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Task.cs" />
     <Compile Include="ModelsAssemblyInstaller.cs" />
+    <Compile Include="Models\ITasksModel.cs" />
+    <Compile Include="Models\TasksModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\ITaskRepositorySerializer.cs" />
+    <Compile Include="Serialization\ITaskListStore.cs" />
+    <Compile Include="Serialization\ITaskListStoreFilenameProvider.cs" />
+    <Compile Include="Serialization\ITaskRepository.cs" />
+    <Compile Include="Serialization\TaskRepositorySerializer.cs" />
+    <Compile Include="Serialization\TaskListStore.cs" />
+    <Compile Include="Serialization\TaskListStoreFilenameProvider.cs" />
+    <Compile Include="Serialization\TaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Timely.Common\Timely.Common.csproj">
