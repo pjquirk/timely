@@ -18,6 +18,8 @@ namespace Timely.ViewModels.Main.SampleData
             TaskListViewModel = new SampleTaskListViewModel();
         }
 
+        public string Caption { get; set; }
+
         public ICommand NewTaskCommand { get; private set; }
 
         public ITaskListViewModel TaskListViewModel { get; private set; }

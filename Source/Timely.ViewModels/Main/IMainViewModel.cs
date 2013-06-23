@@ -6,6 +6,8 @@
 
     public interface IMainViewModel : IViewModel
     {
+        string Caption { get; set;  }
+
         ICommand NewTaskCommand { get; }
         
         ITaskListViewModel TaskListViewModel { get; }

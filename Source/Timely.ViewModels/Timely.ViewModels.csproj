@@ -59,7 +59,10 @@
     <Compile Include="Common\ITimerClient.cs" />
     <Compile Include="Common\ShutDownMessage.cs" />
     <Compile Include="Common\TimeBlockMediator.cs" />
+    <Compile Include="Main\ApplicationCaptionMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
+    <Compile Include="Main\IApplicationCaptionMediator.cs" />
+    <Compile Include="Main\IApplicationCaptionMediatorFactory.cs" />
     <Compile Include="Main\IApplicationLauncher.cs" />
     <Compile Include="Main\IMainView.cs" />
     <Compile Include="Main\IMainViewModel.cs" />

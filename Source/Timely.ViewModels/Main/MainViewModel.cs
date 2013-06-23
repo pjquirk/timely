@@ -7,10 +7,27 @@
 
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
-        public MainViewModel(INewTaskCommand newTaskCommand, ITaskListViewModel taskListViewModel)
+        readonly IApplicationCaptionMediator applicationCaptionMediator;
+        string caption;
+
+        public MainViewModel(
+            INewTaskCommand newTaskCommand,
+            ITaskListViewModel taskListViewModel,
+            IApplicationCaptionMediatorFactory applicationCaptionMediatorFactory)
         {
             NewTaskCommand = newTaskCommand;
             TaskListViewModel = taskListViewModel;
+            applicationCaptionMediator = applicationCaptionMediatorFactory.Create(this);
+        }
+
+        public string Caption
+        {
+            get { return caption; }
+            set
+            {
+                caption = value;
+                RaisePropertyChanged(() => Caption);
+            }
         }
 
         public ICommand NewTaskCommand { get; private set; }

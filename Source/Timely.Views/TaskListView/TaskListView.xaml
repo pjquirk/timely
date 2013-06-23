@@ -22,6 +22,13 @@
                         <Setter Property="Background" Value="Orange"/>
                     </Trigger>
                 </Style.Triggers>
+                <Setter Property="ContextMenu">
+                    <Setter.Value>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
+                        </ContextMenu>
+                    </Setter.Value>
+                </Setter>
             </Style>
         </Grid.Resources>
         <ListView ItemsSource="{Binding Items}" 
@@ -33,6 +40,9 @@
                     <Setter Property="FontSize" Value="8"/>
                 </Style>
             </ListView.Resources>
+            <ListView.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
+            </ListView.InputBindings>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="">
