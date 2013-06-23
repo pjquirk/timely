@@ -18,6 +18,9 @@
             this.task = task;
             totalTimeSummer = totalTimeSummerFactory.Create(this);
             todayTimeSummer = todayTimeSummerFactory.Create(this);
+            // Execute so the sums show up on the GUI immediately
+            totalTimeSummer.Execute();
+            todayTimeSummer.Execute();
         }
 
         public string Header
