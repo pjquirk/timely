@@ -7,37 +7,23 @@
     using Timely.Models.Models;
     using Timely.ViewModels.Common;
 
-    public class TodayTimeSummer : ITodayTimeSummer
+    public class TodayTimeSummer : TimeSummerBase, ITodayTimeSummer
     {
-        readonly ITaskListItemViewModel taskListItemViewModel;
-        readonly ITimeBlocksModel timeBlocksModel;
-        readonly ITimer timer;
-
         public TodayTimeSummer(ITaskListItemViewModel taskListItemViewModel, ITimeBlocksModel timeBlocksModel, ITimer timer)
+            : base(taskListItemViewModel, timeBlocksModel, timer)
         {
-            this.taskListItemViewModel = taskListItemViewModel;
-            this.timeBlocksModel = timeBlocksModel;
-            this.timer = timer;
-            timer.Subscribe(this);
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            IEnumerable<TimeBlock> timeBlocks = timeBlocksModel.GetByTask(taskListItemViewModel.Id);
+            IEnumerable<TimeBlock> timeBlocks = GetTimeBlocks();
             double totalSeconds = timeBlocks.Where(BlockIsToday).Sum((Func<TimeBlock, double>)GetDurationForBlock);
-            taskListItemViewModel.TodayTime = TimeSpan.FromSeconds(totalSeconds);
+            TaskListItemViewModel.TodayTime = TimeSpan.FromSeconds(totalSeconds);
         }
 
         bool BlockIsToday(TimeBlock timeBlock)
         {
             return timeBlock.Start.Date == DateTime.Today;
-        }
-
-        double GetDurationForBlock(TimeBlock timeBlock)
-        {
-            DateTime end = (timeBlock.End != DateTime.MaxValue) ? timeBlock.End : DateTime.UtcNow;
-            TimeSpan duration = end - timeBlock.Start;
-            return duration.TotalSeconds;
         }
     }
 }

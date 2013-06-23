@@ -7,32 +7,18 @@
     using Timely.Models.Models;
     using Timely.ViewModels.Common;
 
-    public class TotalTimeSummer : ITotalTimeSummer
+    public class TotalTimeSummer : TimeSummerBase, ITotalTimeSummer
     {
-        readonly ITaskListItemViewModel taskListItemViewModel;
-        readonly ITimeBlocksModel timeBlocksModel;
-        readonly ITimer timer;
-
         public TotalTimeSummer(ITaskListItemViewModel taskListItemViewModel, ITimeBlocksModel timeBlocksModel, ITimer timer)
+            : base(taskListItemViewModel, timeBlocksModel, timer)
         {
-            this.taskListItemViewModel = taskListItemViewModel;
-            this.timeBlocksModel = timeBlocksModel;
-            this.timer = timer;
-            timer.Subscribe(this);
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            IEnumerable<TimeBlock> timeBlocks = timeBlocksModel.GetByTask(taskListItemViewModel.Id);
+            IEnumerable<TimeBlock> timeBlocks = GetTimeBlocks();
             double totalSeconds = timeBlocks.Sum((Func<TimeBlock, double>)GetDurationForBlock);
-            taskListItemViewModel.TotalTime = TimeSpan.FromSeconds(totalSeconds);
-        }
-
-        double GetDurationForBlock(TimeBlock timeBlock)
-        {
-            DateTime end = (timeBlock.End != DateTime.MaxValue) ? timeBlock.End : DateTime.UtcNow;
-            TimeSpan duration = end - timeBlock.Start;
-            return duration.TotalSeconds;
+            TaskListItemViewModel.TotalTime = TimeSpan.FromSeconds(totalSeconds);
         }
     }
 }
