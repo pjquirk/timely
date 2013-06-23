@@ -9,10 +9,10 @@
 
         Guid Id { get; }
      
-        bool IsActive { get; set; }
+        bool IsActive { get; set; } 
 
-        string TodayTime { get; }
+        TimeSpan TodayTime { get; set;  }
 
-        string TotalTime { get; }
+        TimeSpan TotalTime { get; set;  }
     }
 }

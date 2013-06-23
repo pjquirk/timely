@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AttachedBehaviors\DialogCloser.cs" />
     <Compile Include="Base\WindowBase.cs" />
+    <Compile Include="Common\Timer.cs" />
     <Compile Include="Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -71,9 +72,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaskListView\ActiveTaskIndicatorValueConverter.cs" />
+    <Compile Include="TaskListView\TimeToHmsAndHoursConverter.cs" />
     <Compile Include="TaskListView\TaskListView.xaml.cs">
       <DependentUpon>TaskListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TaskListView\TimeToHoursConverter.cs" />
     <Compile Include="TreeView\TreeListView.cs" />
     <Compile Include="ViewsAssemblyInstaller.cs" />
   </ItemGroup>

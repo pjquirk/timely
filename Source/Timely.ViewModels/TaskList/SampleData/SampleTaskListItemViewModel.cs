@@ -11,8 +11,8 @@
         
         public bool IsActive { get; set; }
 
-        public string TodayTime { get; set; }
+        public TimeSpan TodayTime { get; set; }
 
-        public string TotalTime { get; set; }
+        public TimeSpan TotalTime { get; set; }
     }
 }

@@ -25,6 +25,8 @@ namespace Timely.ViewModels
             container.Register(Component.For(typeof(ISelectedItemCommandFactory<>)).AsFactory());
             container.Register(Component.For<ITaskListItemViewModelFactory>().AsFactory());
             container.Register(Component.For<ITimeBlockMediatorFactory>().AsFactory());
+            container.Register(Component.For<ITotalTimeSummerFactory>().AsFactory());
+            container.Register(Component.For<ITodayTimeSummerFactory>().AsFactory());
         }
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)

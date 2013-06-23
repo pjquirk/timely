@@ -16,27 +16,27 @@
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 1",
-                                    TotalTime = "0.2h",
-                                    TodayTime = "0.1h"
+                                    TotalTime = TimeSpan.FromMinutes(30),
+                                    TodayTime = TimeSpan.FromMinutes(10)
                                 },
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 2",
-                                    TotalTime = "0.2h",
-                                    TodayTime = "0.1h",
+                                    TotalTime = TimeSpan.FromMinutes(30),
+                                    TodayTime = TimeSpan.FromMinutes(10),
                                     IsActive = true
                                 },
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 3",
-                                    TotalTime = "0.2h",
-                                    TodayTime = "0.1h"
+                                    TotalTime = TimeSpan.FromMinutes(30),
+                                    TodayTime = TimeSpan.FromMinutes(10)
                                 },
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 4",
-                                    TotalTime = "0.2h",
-                                    TodayTime = "0.1h"
+                                    TotalTime = TimeSpan.FromMinutes(30),
+                                    TodayTime = TimeSpan.FromMinutes(10)
                                 }
                         };
             SelectedItem = Items[2];

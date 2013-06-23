@@ -55,6 +55,8 @@
     <Compile Include="Common\ITimeBlockMediatorFactory.cs" />
     <Compile Include="Common\IActiveTaskController.cs" />
     <Compile Include="Common\ITimeBlockMediator.cs" />
+    <Compile Include="Common\ITimer.cs" />
+    <Compile Include="Common\ITimerClient.cs" />
     <Compile Include="Common\ShutDownMessage.cs" />
     <Compile Include="Common\TimeBlockMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
@@ -81,13 +83,19 @@
     <Compile Include="TaskList\Commands\SelectedItemCommand.cs" />
     <Compile Include="TaskList\Commands\StartTaskCommand.cs" />
     <Compile Include="TaskList\Commands\StopTaskCommand.cs" />
+    <Compile Include="TaskList\ITodayTimeSummerFactory.cs" />
+    <Compile Include="TaskList\ITodayTimeSummer.cs" />
+    <Compile Include="TaskList\TodayTimeSummer.cs" />
+    <Compile Include="TaskList\ITotalTimeSummerFactory.cs" />
     <Compile Include="TaskList\ITaskListItemViewModel.cs" />
     <Compile Include="TaskList\ITaskListItemViewModelFactory.cs" />
     <Compile Include="TaskList\ITaskListViewModel.cs" />
+    <Compile Include="TaskList\ITotalTimeSummer.cs" />
     <Compile Include="TaskList\SampleData\SampleTaskListItemViewModel.cs" />
     <Compile Include="TaskList\SampleData\SampleTaskListViewModel.cs" />
     <Compile Include="TaskList\TaskListItemViewModel.cs" />
     <Compile Include="TaskList\TaskListViewModel.cs" />
+    <Compile Include="TaskList\TotalTimeSummer.cs" />
     <Compile Include="ViewModelsAssemblyInstaller.cs" />
   </ItemGroup>
   <ItemGroup>

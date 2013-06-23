@@ -11,6 +11,8 @@
     <Grid>
         <Grid.Resources>
             <taskListView:ActiveTaskIndicatorValueConverter x:Key="activeTaskIndicatorValueConverter" />
+            <taskListView:TimeToHoursConverter x:Key="timeToStringConverter" />
+            <taskListView:TimeToHmsAndHoursConverter x:Key="timeToHmsAndStringConverter" />
             <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
                 <Style.Triggers>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="1">
@@ -50,14 +52,14 @@
                     <GridViewColumn Header="Today">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TodayTime}" />
+                                <TextBlock Text="{Binding TodayTime, Converter={StaticResource timeToHmsAndStringConverter}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Total">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TotalTime}" />
+                                <TextBlock Text="{Binding TotalTime, Converter={StaticResource timeToStringConverter}}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

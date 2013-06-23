@@ -7,11 +7,17 @@
     public class TaskListItemViewModel : ViewModelBase, ITaskListItemViewModel
     {
         readonly Task task;
+        readonly ITodayTimeSummer todayTimeSummer;
+        readonly ITotalTimeSummer totalTimeSummer;
         bool isActive;
+        TimeSpan todayTime;
+        TimeSpan totalTime;
 
-        public TaskListItemViewModel(Task task)
+        public TaskListItemViewModel(Task task, ITotalTimeSummerFactory totalTimeSummerFactory, ITodayTimeSummerFactory todayTimeSummerFactory)
         {
             this.task = task;
+            totalTimeSummer = totalTimeSummerFactory.Create(this);
+            todayTimeSummer = todayTimeSummerFactory.Create(this);
         }
 
         public string Header
@@ -34,8 +40,24 @@
             }
         }
 
-        public string TodayTime { get; private set; }
+        public TimeSpan TodayTime
+        {
+            get { return todayTime; }
+            set
+            {
+                todayTime = value;
+                RaisePropertyChanged(() => TodayTime);
+            }
+        }
 
-        public string TotalTime { get; private set; }
+        public TimeSpan TotalTime
+        {
+            get { return totalTime; }
+            set
+            {
+                totalTime = value;
+                RaisePropertyChanged(() => TotalTime);
+            }
+        }
     }
 }
