@@ -1,11 +1,12 @@
-﻿using Castle.Windsor;
-using System.Windows;
-using Timely.Main.Initialization;
-using Timely.ViewModels.Main;
-
-namespace Timely.Main
+﻿namespace Timely.Main
 {
+    using System.Windows;
+    using Castle.Windsor;
+    using GalaSoft.MvvmLight.Messaging;
+    using Timely.Main.Initialization;
     using Timely.Models.Serialization;
+    using Timely.ViewModels.Common;
+    using Timely.ViewModels.Main;
 
     public partial class App : Application
     {
@@ -14,6 +15,7 @@ namespace Timely.Main
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
+            NotifyShutDown();
             SaveTaskList();
             container.Dispose();
         }
@@ -25,22 +27,28 @@ namespace Timely.Main
             LaunchApplication();
         }
 
-        private void LoadTaskList()
+        void LaunchApplication()
+        {
+            IApplicationLauncher applicationLauncher = container.Resolve<IApplicationLauncher>();
+            applicationLauncher.Execute();
+        }
+
+        void LoadTaskList()
         {
             ITaskListStore taskListStore = container.Resolve<ITaskListStore>();
             taskListStore.Load();
         }
 
-        private void SaveTaskList()
+        void NotifyShutDown()
+        {
+            IMessenger messenger = container.Resolve<IMessenger>();
+            messenger.Send<IShutDownMessage>(new ShutDownMessage());
+        }
+
+        void SaveTaskList()
         {
             ITaskListStore taskListStore = container.Resolve<ITaskListStore>();
             taskListStore.Save();
-        }
-
-        private void LaunchApplication()
-        {
-            IApplicationLauncher applicationLauncher = container.Resolve<IApplicationLauncher>();
-            applicationLauncher.Execute();
         }
     }
 }

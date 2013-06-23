@@ -1,11 +1,20 @@
 ﻿namespace Timely.ViewModels.Common
 {
     using System;
+    using GalaSoft.MvvmLight.Messaging;
     using Timely.Models.Common;
 
     public class ActiveTaskController : IActiveTaskController
     {
         Guid activeTaskId;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
+        /// </summary>
+        public ActiveTaskController(IMessenger messenger)
+        {
+            SubscribeToShutDownMessage(messenger);
+        }
 
         public event EventHandler<EntityIdEventArgs> ActiveTaskIdChanged;
 
@@ -63,6 +72,16 @@
             EventHandler<EntityIdEventArgs> handler = TaskStopped;
             if (handler != null)
                 handler(this, new EntityIdEventArgs(id));
+        }
+
+        void HandleShutDown(IShutDownMessage shutDownMessage)
+        {
+            Stop();
+        }
+
+        void SubscribeToShutDownMessage(IMessenger messenger)
+        {
+            messenger.Register<IShutDownMessage>(this, HandleShutDown);
         }
     }
 }

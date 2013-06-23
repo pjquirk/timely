@@ -10,6 +10,7 @@ namespace Timely.ViewModels
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
+    using GalaSoft.MvvmLight.Messaging;
     using Timely.Common.Installer;
     using Timely.ViewModels.Base;
     using Timely.ViewModels.Common;
@@ -29,6 +30,7 @@ namespace Timely.ViewModels
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For<IActiveTaskController>().ImplementedBy<ActiveTaskController>().LifeStyle.Singleton);
+            container.Register(Component.For<IMessenger>().ImplementedBy<Messenger>().LifeStyle.Singleton);
         }
     }
 }
