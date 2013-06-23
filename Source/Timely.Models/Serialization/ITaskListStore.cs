@@ -8,6 +8,8 @@
     {
         IDictionary<Guid, Task> Tasks { get; }
 
+        IDictionary<Guid, TimeBlock> TimeBlocks { get; }
+
         void Load();
 
         void Save();

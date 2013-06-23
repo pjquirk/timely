@@ -7,5 +7,7 @@
     public interface ITaskRepository
     {
         IDictionary<Guid, Task> Tasks { get; }
+
+        IDictionary<Guid, TimeBlock> TimeBlocks { get; }
     }
 }

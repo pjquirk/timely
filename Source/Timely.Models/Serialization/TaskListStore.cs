@@ -25,6 +25,11 @@
             get { return taskRepository.Tasks; }
         }
 
+        public IDictionary<Guid, TimeBlock> TimeBlocks
+        {
+            get { return taskRepository.TimeBlocks; }
+        }
+
         public void Load()
         {
             try

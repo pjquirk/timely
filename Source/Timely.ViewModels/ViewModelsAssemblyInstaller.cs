@@ -23,6 +23,7 @@ namespace Timely.ViewModels
             container.Register(Component.For(typeof(IViewFactory<>)).AsFactory());
             container.Register(Component.For(typeof(ISelectedItemCommandFactory<>)).AsFactory());
             container.Register(Component.For<ITaskListItemViewModelFactory>().AsFactory());
+            container.Register(Component.For<ITimeBlockMediatorFactory>().AsFactory());
         }
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)

@@ -11,10 +11,14 @@
 
         event EventHandler<EntityIdEventArgs> EntityDeleted;
 
+        event EventHandler<EntityEventArgs<T>> EntityUpdated;
+
         void Delete(Guid id);
 
         T Get(Guid id);
 
         IEnumerable<T> GetAll();
+
+        void Update(T entity);
     }
 }

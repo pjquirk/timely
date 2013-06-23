@@ -51,7 +51,10 @@
     <Compile Include="Base\IViewFactory.cs" />
     <Compile Include="Base\IViewModel.cs" />
     <Compile Include="Common\ActiveTaskController.cs" />
+    <Compile Include="Common\ITimeBlockMediatorFactory.cs" />
     <Compile Include="Common\IActiveTaskController.cs" />
+    <Compile Include="Common\ITimeBlockMediator.cs" />
+    <Compile Include="Common\TimeBlockMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
     <Compile Include="Main\IApplicationLauncher.cs" />
     <Compile Include="Main\IMainView.cs" />

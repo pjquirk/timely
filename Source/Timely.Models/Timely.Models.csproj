@@ -54,7 +54,10 @@
     <Compile Include="Common\IEntityModel.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\TimeBlock.cs" />
     <Compile Include="ModelsAssemblyInstaller.cs" />
+    <Compile Include="Models\TimeBlocksModel.cs" />
+    <Compile Include="Models\ITimeBlocksModel.cs" />
     <Compile Include="Models\ITasksModel.cs" />
     <Compile Include="Models\TasksModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

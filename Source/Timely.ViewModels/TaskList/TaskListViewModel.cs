@@ -14,6 +14,7 @@
     public class TaskListViewModel : ViewModelBase, ITaskListViewModel
     {
         readonly IActiveTaskController activeTaskController;
+        readonly ITimeBlockMediator timeBlockMediator;
         readonly ITaskListItemViewModelFactory taskListItemViewModelFactory;
         readonly ITasksModel tasksModel;
         ITaskListItemViewModel selectedItem;
@@ -22,6 +23,7 @@
             ITasksModel tasksModel,
             ITaskListItemViewModelFactory taskListItemViewModelFactory,
             IActiveTaskController activeTaskController,
+            ITimeBlockMediatorFactory timeBlockMediatorFactory,
             ISelectedItemCommandFactory<IStartTaskCommand> startTaskCommandFactory,
             ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
             ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
@@ -30,6 +32,7 @@
             this.tasksModel = tasksModel;
             this.taskListItemViewModelFactory = taskListItemViewModelFactory;
             this.activeTaskController = activeTaskController;
+            this.timeBlockMediator = timeBlockMediatorFactory.Create(activeTaskController);
             DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
             StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
             StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
