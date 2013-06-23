@@ -1,5 +1,6 @@
 ﻿namespace Timely.ViewModels.TaskList.Commands
 {
+    using Timely.Models.Common;
     using Timely.ViewModels.Common;
 
     public class StartTaskCommand : SelectedItemCommand, IStartTaskCommand
@@ -10,6 +11,12 @@
             : base(taskListViewModel)
         {
             this.activeTaskController = activeTaskController;
+            SubscribeToActiveTaskControllerEvents();
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return base.CanExecute(parameter) && SelectedItem.Id != activeTaskController.ActiveTaskId;
         }
 
         public override void Execute(object parameter)
@@ -17,9 +24,15 @@
             activeTaskController.Start(SelectedItem.Id);
         }
 
-        public override bool CanExecute(object parameter)
+        void HandleTaskStartedOrStopped(object sender, EntityIdEventArgs e)
         {
-            return base.CanExecute(parameter) && SelectedItem.Id != activeTaskController.ActiveTaskId;
+            OnCanExecuteChanged();
+        }
+
+        void SubscribeToActiveTaskControllerEvents()
+        {
+            activeTaskController.TaskStarted += HandleTaskStartedOrStopped;
+            activeTaskController.TaskStopped += HandleTaskStartedOrStopped;
         }
     }
 }
