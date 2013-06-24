@@ -13,13 +13,10 @@
             <taskListView:ActiveTaskIndicatorValueConverter x:Key="activeTaskIndicatorValueConverter" />
             <taskListView:TimeToHoursConverter x:Key="timeToStringConverter" />
             <taskListView:TimeToHmsAndHoursConverter x:Key="timeToHmsAndStringConverter" />
-            <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
+            <Style x:Key="alternatingStyle" TargetType="{x:Type DataGridRow}">
                 <Style.Triggers>
                     <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                         <Setter Property="Background" Value="AliceBlue"></Setter>
-                    </Trigger>
-                    <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="Background" Value="Orange"/>
                     </Trigger>
                 </Style.Triggers>
                 <Setter Property="ContextMenu">
@@ -31,7 +28,62 @@
                 </Setter>
             </Style>
         </Grid.Resources>
-        <ListView ItemsSource="{Binding Items}" 
+        <DataGrid ItemsSource="{Binding Items}" 
+                  AlternationCount="2" 
+                  AutoGenerateColumns="False"
+                  ItemContainerStyle="{StaticResource alternatingStyle}"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  SelectedItem="{Binding SelectedItem}" 
+                  RowHeaderWidth="0"
+                  GridLinesVisibility="None">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader" x:Key="rightAlignHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF8C00"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFFFDC"/>
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="" Width="SizeToCells" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Description" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Header}" Margin="3,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Today" Width="SizeToCells" IsReadOnly="True" HeaderStyle="{StaticResource rightAlignHeader}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TodayTime, Converter={StaticResource timeToHmsAndStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Total" Width="SizeToHeader" IsReadOnly="True" HeaderStyle="{StaticResource rightAlignHeader}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TotalTime, Converter={StaticResource timeToStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<ListView ItemsSource="{Binding Items}" 
                   AlternationCount="2" 
                   ItemContainerStyle="{StaticResource alternatingStyle}"
                   SelectedItem="{Binding SelectedItem}">
@@ -75,6 +127,6 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
     </Grid>
 </UserControl>
