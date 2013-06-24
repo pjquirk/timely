@@ -14,6 +14,7 @@ namespace Timely.ViewModels
     using Timely.Common.Installer;
     using Timely.ViewModels.Base;
     using Timely.ViewModels.Common;
+    using Timely.ViewModels.EditTask;
     using Timely.ViewModels.Main;
     using Timely.ViewModels.TaskList;
     using Timely.ViewModels.TaskList.Commands;
@@ -29,6 +30,7 @@ namespace Timely.ViewModels
             container.Register(Component.For<ITotalTimeSummerFactory>().AsFactory());
             container.Register(Component.For<ITodayTimeSummerFactory>().AsFactory());
             container.Register(Component.For<IApplicationCaptionMediatorFactory>().AsFactory());
+            container.Register(Component.For<IEditTaskViewModelFactory>().AsFactory());
         }
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)

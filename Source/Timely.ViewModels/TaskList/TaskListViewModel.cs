@@ -14,9 +14,9 @@
     public class TaskListViewModel : ViewModelBase, ITaskListViewModel
     {
         readonly IActiveTaskController activeTaskController;
-        readonly ITimeBlockMediator timeBlockMediator;
         readonly ITaskListItemViewModelFactory taskListItemViewModelFactory;
         readonly ITasksModel tasksModel;
+        readonly ITimeBlockMediator timeBlockMediator;
         ITaskListItemViewModel selectedItem;
 
         public TaskListViewModel(
@@ -32,7 +32,7 @@
             this.tasksModel = tasksModel;
             this.taskListItemViewModelFactory = taskListItemViewModelFactory;
             this.activeTaskController = activeTaskController;
-            this.timeBlockMediator = timeBlockMediatorFactory.Create(activeTaskController);
+            timeBlockMediator = timeBlockMediatorFactory.Create(activeTaskController);
             DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
             StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
             StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
@@ -95,6 +95,16 @@
                 Items.Remove(item);
         }
 
+        void HandleTaskUpdated(object sender, EntityEventArgs<Task> e)
+        {
+            ITaskListItemViewModel item = Items.FirstOrDefault(i => i.Id == e.Entity.Id);
+            if (item != null)
+            {
+                Task task = tasksModel.Get(e.Entity.Id);
+                item.Update(task);
+            }
+        }
+
         void PopulateItems()
         {
             Items = new ObservableCollection<ITaskListItemViewModel>(tasksModel.GetAll().Select(CreateItemViewModel));
@@ -109,6 +119,7 @@
         {
             tasksModel.EntityAdded += HandleTaskAdded;
             tasksModel.EntityDeleted += HandleTaskDeleted;
+            tasksModel.EntityUpdated += HandleTaskUpdated;
         }
     }
 }

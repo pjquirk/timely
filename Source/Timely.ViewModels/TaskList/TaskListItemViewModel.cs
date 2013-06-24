@@ -6,10 +6,10 @@
 
     public class TaskListItemViewModel : ViewModelBase, ITaskListItemViewModel
     {
-        readonly Task task;
         readonly ITodayTimeSummer todayTimeSummer;
         readonly ITotalTimeSummer totalTimeSummer;
         bool isActive;
+        Task task;
         TimeSpan todayTime;
         TimeSpan totalTime;
 
@@ -61,6 +61,15 @@
                 totalTime = value;
                 RaisePropertyChanged(() => TotalTime);
             }
+        }
+
+        public void Update(Task task)
+        {
+            this.task = task;
+            RaisePropertyChanged(() => Header);
+            RaisePropertyChanged(() => Id);
+            RaisePropertyChanged(() => TodayTime);
+            RaisePropertyChanged(() => TotalTime);
         }
     }
 }

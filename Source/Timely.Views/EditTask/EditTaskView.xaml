@@ -1,14 +1,14 @@
-﻿<srcBase:WindowBase x:Class="Timely.Views.NewTask.NewTaskView"
+﻿<srcBase:WindowBase x:Class="Timely.Views.EditTask.EditTaskView"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:srcBase="clr-namespace:Timely.Views.Base" 
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-                    xmlns:sampleData="clr-namespace:Timely.ViewModels.NewTask.SampleData;assembly=Timely.ViewModels"
+                    xmlns:sampleData="clr-namespace:Timely.ViewModels.EditTask.SampleData;assembly=Timely.ViewModels"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
                     mc:Ignorable="d" 
-                    d:DataContext="{d:DesignInstance Type=sampleData:SampleNewTaskViewModel, IsDesignTimeCreatable=True}"
-                    Title="Create New Task"
+                    d:DataContext="{d:DesignInstance Type=sampleData:SampleEditTaskViewModel, IsDesignTimeCreatable=True}"
+                    Title="Edit Task"
                     SizeToContent="WidthAndHeight"
                     ResizeMode="NoResize" 
                     WindowStyle="ToolWindow"
@@ -17,11 +17,13 @@
                     FocusManager.FocusedElement="{Binding ElementName=description}">
     <Grid>
         <StackPanel FocusManager.IsFocusScope="True">
-            <Label Content="_Enter a description of the task:" Target="description"/>
-            <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="350" Margin="7,0,7,0" x:Name="description"/>
-        
+            <StackPanel Orientation="Horizontal" Margin="0,7,10,0">
+                <Label Content="_Description:" Target="description"/>
+                <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" Margin="5,0,0,0" x:Name="description"/>
+            </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding CreateTaskCommand}"/>
+                <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding UpdateTaskCommand}"/>
                 <Button IsCancel="True" Content="_Cancel" Width="70"/>
             </StackPanel>
         </StackPanel>

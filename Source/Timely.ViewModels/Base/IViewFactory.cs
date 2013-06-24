@@ -10,5 +10,7 @@ namespace Timely.ViewModels.Base
         where T : IView
     {
         T Create();
+        
+        T Create(IViewModel dataContext);
     }
 }
