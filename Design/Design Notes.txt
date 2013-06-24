@@ -7,12 +7,20 @@ DONE - The app will keep track of blocks of time a task was worked on
 DONE - The app will reset "Today Time" counters at the start of the day
 
 Phase 2:
-- I want to be able to group tasks into categories (Infra, Dev)
-  - Use groups in a DataGrid
 - I want to be able to modify time spent on a task
   - How do you modify it?  Do you change a timeblock or just apply a modification to the task?
-	- Add an extra "modification" block
+	- Add an extra "modification" block every time an edit occurs with today's date
+	- New entity, TimeModification
+		- DateTime Created
+		- TimeSpan Difference
+- I want to be able to group tasks into categories (Infra, Dev)
+	- Add "GroupId" to Task
+	- Add "Group" Entity
+		- string Name
+  - Use groups in a DataGrid
 - I want the app to track idle time
+	- Task needs a "IsSystemOwned" field
+	- Cannot delete these tasks
 - I want to be notified when the timer has been idle for N minutes
 - I want a summary of the previous day's tasks (totals only)
 
