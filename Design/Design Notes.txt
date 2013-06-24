@@ -1,17 +1,17 @@
 Phase 1:
-- I want to be able to keep track of time spent throughout the day
-- I will use individual tasks, with totals for day and all-time
-- I will give each task a name
-- I will manually start and stop a task, like a chess timer
-- The app will keep track of blocks of time a task was worked on
-- The app will reset all counters at the start of the day
+DONE - I want to be able to keep track of time spent throughout the day
+DONE - I will use individual tasks, with totals for day and all-time
+DONE - I will give each task a name
+DONE - I will manually start and stop a task, like a chess timer
+DONE - The app will keep track of blocks of time a task was worked on
+DONE - The app will reset "Today Time" counters at the start of the day
 
 Phase 2:
+- I want to be able to group tasks into categories (Infra, Dev)
+  - Use groups in a DataGrid
 - I want to be able to modify time spent on a task
   - How do you modify it?  Do you change a timeblock or just apply a modification to the task?
 	- Add an extra "modification" block
-- I want to be able to group tasks into categories (Infra, Dev)
-  - Need a tree table view? Or just use groups in a list view?  
 - I want the app to track idle time
 - I want to be notified when the timer has been idle for N minutes
 - I want a summary of the previous day's tasks (totals only)
