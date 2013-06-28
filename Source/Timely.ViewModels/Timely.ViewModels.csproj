@@ -63,7 +63,11 @@
     <Compile Include="EditTask\IEditTaskView.cs" />
     <Compile Include="EditTask\IEditTaskViewModel.cs" />
     <Compile Include="EditTask\IEditTaskViewModelFactory.cs" />
+    <Compile Include="EditTask\ITimeBlockListItemViewModel.cs" />
+    <Compile Include="EditTask\ITimeBlockListItemViewModelFactory.cs" />
     <Compile Include="EditTask\SampleData\SampleEditTaskViewModel.cs" />
+    <Compile Include="EditTask\SampleData\SampleTimeBlockListItemViewModel.cs" />
+    <Compile Include="EditTask\TimeBlockListItemViewModel.cs" />
     <Compile Include="Main\ApplicationCaptionMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
     <Compile Include="Main\IApplicationCaptionMediator.cs" />

@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="MainView.xaml.cs" company="LexisNexis">
-//   Copyright 2012 LexisNexis. All Rights Reserved.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Timely.Views.Main
+﻿namespace Timely.Views.Main
 {
     using Timely.ViewModels.Main;
     using Timely.Views.Base;

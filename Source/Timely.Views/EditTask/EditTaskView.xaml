@@ -6,6 +6,7 @@
                     xmlns:sampleData="clr-namespace:Timely.ViewModels.EditTask.SampleData;assembly=Timely.ViewModels"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
+                    xmlns:taskListView="clr-namespace:Timely.Views.TaskListView"
                     mc:Ignorable="d" 
                     d:DataContext="{d:DesignInstance Type=sampleData:SampleEditTaskViewModel, IsDesignTimeCreatable=True}"
                     Title="Edit Task"
@@ -16,16 +17,69 @@
                     attachedBehaviors:DialogCloser.DialogResult="{Binding DialogResult}"
                     FocusManager.FocusedElement="{Binding ElementName=description}">
     <Grid>
-        <StackPanel FocusManager.IsFocusScope="True">
-            <StackPanel Orientation="Horizontal" Margin="0,7,10,0">
-                <Label Content="_Description:" Target="description"/>
-                <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" Margin="5,0,0,0" x:Name="description"/>
-            </StackPanel>
+        <Grid FocusManager.IsFocusScope="True" Margin="5,7,7,7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Label Grid.Row="0" Grid.Column="0" Content="_Description:" Target="description"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" x:Name="description"/>
+            
+            <Label Grid.Row="1" Grid.Column="0" Content="_History:" Target="history"/>
+            <DataGrid 
+                Grid.Row="1" Grid.Column="1"
+                Height="150"
+                ItemsSource="{Binding Items}" 
+                  AlternationCount="2" 
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  SelectedItem="{Binding SelectedItem}" 
+                  RowHeaderWidth="0"
+                  GridLinesVisibility="None"
+                Margin="0,3,0,0"
+                x:Name="history">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF8C00"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFFFDC"/>
+                    <taskListView:TimeToHmsAndHoursConverter x:Key="timeToHmsAndStringConverter" />
+                </DataGrid.Resources>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.CellStyle>
+                <!--<DataGrid.InputBindings>
+                    <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
+                </DataGrid.InputBindings>-->
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Date" Width="SizeToCells" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Date}" HorizontalAlignment="Center" Margin="3,0"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Time" Width="Auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Time, Converter={StaticResource timeToHmsAndStringConverter}}" Margin="3,0"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">
                 <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding UpdateTaskCommand}"/>
                 <Button IsCancel="True" Content="_Cancel" Width="70"/>
             </StackPanel>
-        </StackPanel>
+        </Grid>
     </Grid>
 </srcBase:WindowBase>

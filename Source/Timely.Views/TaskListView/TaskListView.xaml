@@ -83,50 +83,5 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <!--<ListView ItemsSource="{Binding Items}" 
-                  AlternationCount="2" 
-                  ItemContainerStyle="{StaticResource alternatingStyle}"
-                  SelectedItem="{Binding SelectedItem}">
-            <ListView.Resources>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="FontSize" Value="8"/>
-                </Style>
-            </ListView.Resources>
-            <ListView.InputBindings>
-                <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
-            </ListView.InputBindings>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Description">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Header}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Today">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TodayTime, Converter={StaticResource timeToHmsAndStringConverter}}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Total">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TotalTime, Converter={StaticResource timeToStringConverter}}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>-->
     </Grid>
 </UserControl>
