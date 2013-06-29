@@ -23,6 +23,9 @@
             ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory)
         {
             UpdateTaskCommand = new RelayCommand(UpdateTaskExecute);
+            AddTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
+            EditSelectedTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
+            DeleteSelectedTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
             this.tasksModel = tasksModel;
             this.timeBlocksModel = timeBlocksModel;
             this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
@@ -30,18 +33,21 @@
             PopulateItems();
         }
 
+        public ICommand AddTimeBlockCommand { get; private set; }
+
+        public ICommand DeleteSelectedTimeBlockCommand { get; private set; }
+
         public string Description
         {
-            get
-            {
-                return task.Description;
-            }
+            get { return task.Description; }
             set
             {
                 task.Description = value;
                 RaisePropertyChanged(() => Description);
             }
         }
+
+        public ICommand EditSelectedTimeBlockCommand { get; private set; }
 
         public ObservableCollection<ITimeBlockListItemViewModel> Items { get; private set; }
 
@@ -54,8 +60,18 @@
 
         void PopulateItems()
         {
-            Items = new ObservableCollection<ITimeBlockListItemViewModel>(
-                timeBlocksModel.GetByTask(task.Id).Select(CreateTimeBlockListItemViewModel));
+            Items =
+                new ObservableCollection<ITimeBlockListItemViewModel>(
+                    timeBlocksModel.GetByTask(task.Id).Where(t => t.End != DateTime.MaxValue).Select(CreateTimeBlockListItemViewModel));
+        }
+
+        bool StubCanExecute()
+        {
+            return false;
+        }
+
+        void StubExecute()
+        {
         }
 
         void UpdateTaskExecute()
