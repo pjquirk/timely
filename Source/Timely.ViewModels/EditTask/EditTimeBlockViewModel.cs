@@ -16,7 +16,7 @@
         {
             this.timeBlocksModel = timeBlocksModel;
             timeBlock = timeBlocksModel.Get(timeBlockId);
-            UpdateTimeBlockCommand = new RelayCommand(UpdateTimeBlockExecute);
+            UpdateTimeBlockCommand = new RelayCommand(UpdateTimeBlockExecute, CanExecuteUpdateTimeBlock);
         }
 
         public DateTime EndTime
@@ -24,6 +24,7 @@
             get { return timeBlock.End.ToLocalTime(); }
             set { timeBlock.End = value.ToUniversalTime(); }
         }
+        public string Error { get; private set; }
 
         public DateTime StartTime
         {
@@ -33,29 +34,29 @@
 
         public ICommand UpdateTimeBlockCommand { get; private set; }
 
+        public string this[string columnName]
+        {
+            get
+            {
+                Error = null;
+                if (columnName == "EndTime" || columnName == "StartTime")
+                {
+                    if (StartTime > EndTime)
+                        Error = "Times must make sense.";
+                }
+                return Error;
+            }
+        }
+
+        bool CanExecuteUpdateTimeBlock()
+        {
+            return Error == null;
+        }
+
         void UpdateTimeBlockExecute()
         {
             timeBlocksModel.Update(timeBlock);
             Close();
         }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                string result = null;
-
-                if (columnName == "EndTime" || columnName == "StartTime")
-                {
-                    if (this.StartTime > this.EndTime)
-                    {
-                        result = "Times must make sense.";
-                    }
-                }
-                return result;
-            }
-        }
-
-        public string Error { get { return null; } }
     }
 }
