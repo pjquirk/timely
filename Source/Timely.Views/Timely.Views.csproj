@@ -74,7 +74,6 @@
       <DependentUpon>NewTaskView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskListView\ActiveTaskIndicatorValueConverter.cs" />
     <Compile Include="TaskListView\TimeToHmsAndHoursConverter.cs" />
     <Compile Include="TaskListView\TaskListView.xaml.cs">
       <DependentUpon>TaskListView.xaml</DependentUpon>
@@ -113,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\button_grey_play.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

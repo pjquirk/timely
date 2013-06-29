@@ -10,7 +10,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.Resources>
-            <taskListView:ActiveTaskIndicatorValueConverter x:Key="activeTaskIndicatorValueConverter" />
             <taskListView:TimeToHoursConverter x:Key="timeToStringConverter" />
             <taskListView:TimeToHmsAndHoursConverter x:Key="timeToHmsAndStringConverter" />
             <Style x:Key="alternatingStyle" TargetType="{x:Type DataGridRow}">
@@ -56,7 +55,18 @@
                 <DataGridTemplateColumn Header="" Width="SizeToCells" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" HorizontalAlignment="Center"/>
+                            <Image Height="16">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                <Setter Property="Source" Value="pack://application:,,,/Timely.Views;component/Resources/button_grey_play.png"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                            <!--<TextBlock FontFamily="Marlett" Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" HorizontalAlignment="Center"/>-->
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
