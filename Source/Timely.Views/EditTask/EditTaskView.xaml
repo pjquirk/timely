@@ -61,12 +61,18 @@
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF8C00"/>
                         <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#FFFFDC"/>
                         <taskListView:TimeToHmsAndHoursConverter x:Key="timeToHmsAndStringConverter" />
+                        <BooleanToVisibilityConverter x:Key="boolToVisConverter"/>
                     </DataGrid.Resources>
                     <DataGrid.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Setter Property="BorderThickness" Value="0"/>
                         </Style>
                     </DataGrid.CellStyle>
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource boolToVisConverter}}" />
+                        </Style>
+                    </DataGrid.RowStyle>
                     <!--<DataGrid.InputBindings>
                         <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
                     </DataGrid.InputBindings>-->

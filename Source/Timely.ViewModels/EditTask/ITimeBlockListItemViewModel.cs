@@ -8,8 +8,12 @@
     {
         DateTime Date { get; }
 
+        bool HideIfBeforeToday { get; set; }
+        
         Guid Id { get; }
-
+        
+        bool IsVisible { get; }
+        
         TimeSpan Time { get; }
 
         void Update(TimeBlock timeBlock);

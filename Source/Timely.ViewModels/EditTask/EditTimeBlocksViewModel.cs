@@ -19,6 +19,7 @@
         readonly Guid taskId;
         readonly ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory;
         readonly ITimeBlocksModel timeBlocksModel;
+        bool hideTimesBeforeToday;
 
         public EditTimeBlocksViewModel(
             Guid taskId,
@@ -32,10 +33,10 @@
             this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
             this.editTimeBlockViewFactory = editTimeBlockViewFactory;
             this.editTimeBlockViewModelFactory = editTimeBlockViewModelFactory;
-            HideTimesBeforeToday = true;
             CreateCommands();
             PopulateItems();
             SubscribeToTimeBlocksModelEvents();
+            HideTimesBeforeToday = true;
         }
 
         public ICommand AddTimeBlockCommand { get; private set; }
@@ -44,7 +45,18 @@
 
         public ICommand EditSelectedTimeBlockCommand { get; private set; }
 
-        public bool HideTimesBeforeToday { get; set; }
+        public bool HideTimesBeforeToday
+        {
+            get { return hideTimesBeforeToday; }
+            set
+            {
+                hideTimesBeforeToday = value;
+                foreach (var item in Items)
+                    item.HideIfBeforeToday = value;
+                if (SelectedItem != null && !SelectedItem.IsVisible)
+                    SelectedItem = null;
+            }
+        }
 
         public ObservableCollection<ITimeBlockListItemViewModel> Items { get; private set; }
 
