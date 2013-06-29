@@ -66,7 +66,6 @@
                                     </Style>
                                 </Image.Style>
                             </Image>
-                            <!--<TextBlock FontFamily="Marlett" Text="{Binding IsActive, Converter={StaticResource activeTaskIndicatorValueConverter}}" HorizontalAlignment="Center"/>-->
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -84,10 +83,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Total" Width="SizeToHeader" IsReadOnly="True" HeaderStyle="{StaticResource rightAlignHeader}">
+                <DataGridTemplateColumn Header="Total" Width="SizeToCells" IsReadOnly="True" HeaderStyle="{StaticResource rightAlignHeader}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding TotalTime, Converter={StaticResource timeToStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
+                            <TextBlock Text="{Binding TotalTime, Converter={StaticResource timeToHmsAndStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
