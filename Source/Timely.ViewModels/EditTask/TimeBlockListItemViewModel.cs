@@ -15,18 +15,17 @@
 
         public DateTime Date
         {
-            get
-            {
-                return timeBlock.Start;
-            }
+            get { return timeBlock.Start; }
+        }
+
+        public Guid Id
+        {
+            get { return timeBlock.Id; }
         }
 
         public TimeSpan Time
         {
-            get
-            {
-                return timeBlock.End - timeBlock.Start;
-            }
+            get { return timeBlock.End - timeBlock.Start; }
         }
     }
 }

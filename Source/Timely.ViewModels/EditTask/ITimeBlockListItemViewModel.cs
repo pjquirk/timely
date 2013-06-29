@@ -6,7 +6,9 @@
     public interface ITimeBlockListItemViewModel : IViewModel
     {
         DateTime Date { get; }
-        
+
+        Guid Id { get; }
+
         TimeSpan Time { get; }
     }
 }

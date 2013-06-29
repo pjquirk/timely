@@ -14,6 +14,7 @@
     public class EditTimeBlocksViewModel : ViewModelBase, IEditTimeBlocksViewModel
     {
         readonly IViewFactory<IEditTimeBlockView> editTimeBlockViewFactory;
+        readonly IEditTimeBlockViewModelFactory editTimeBlockViewModelFactory;
         readonly Guid taskId;
         readonly ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory;
         readonly ITimeBlocksModel timeBlocksModel;
@@ -22,12 +23,14 @@
             Guid taskId,
             ITimeBlocksModel timeBlocksModel,
             ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory,
-            IViewFactory<IEditTimeBlockView> editTimeBlockViewFactory)
+            IViewFactory<IEditTimeBlockView> editTimeBlockViewFactory,
+            IEditTimeBlockViewModelFactory editTimeBlockViewModelFactory)
         {
             this.taskId = taskId;
             this.timeBlocksModel = timeBlocksModel;
             this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
             this.editTimeBlockViewFactory = editTimeBlockViewFactory;
+            this.editTimeBlockViewModelFactory = editTimeBlockViewModelFactory;
             CreateCommands();
             PopulateItems();
         }
@@ -61,7 +64,8 @@
 
         void ExecuteEditTimeBlock()
         {
-            IEditTimeBlockView editTimeBlockView = editTimeBlockViewFactory.Create();
+            IEditTimeBlockViewModel editTimeBlockViewModel = editTimeBlockViewModelFactory.Create(SelectedItem.Id);
+            IEditTimeBlockView editTimeBlockView = editTimeBlockViewFactory.Create(editTimeBlockViewModel);
             editTimeBlockView.ShowDialog();
         }
 

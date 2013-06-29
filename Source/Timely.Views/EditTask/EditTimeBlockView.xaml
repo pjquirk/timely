@@ -6,9 +6,9 @@
                     xmlns:sampleData="clr-namespace:Timely.ViewModels.EditTask.SampleData;assembly=Timely.ViewModels"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
-                    xmlns:taskListView="clr-namespace:Timely.Views.TaskListView"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     mc:Ignorable="d" 
-                    d:DataContext="{d:DesignInstance Type=sampleData:SampleEditTaskViewModel, IsDesignTimeCreatable=True}"
+                    d:DataContext="{d:DesignInstance Type=sampleData:SampleEditTimeBlockViewModel, IsDesignTimeCreatable=True}"
                     Title="Edit Time"
                     SizeToContent="WidthAndHeight"
                     ResizeMode="NoResize" 
@@ -29,13 +29,29 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Content="_Start:" Target="startTime"/>
-            <DatePickerTextBox Grid.Row="0" Grid.Column="1" Width="300" x:Name="startTime"/>
+            <xctk:DateTimePicker Grid.Row="0" Grid.Column="1" Width="300" x:Name="startTime">
+                <xctk:DateTimePicker.Value>
+                    <Binding Path="StartTime">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:DateTimePicker.Value>
+            </xctk:DateTimePicker>
             
             <Label Grid.Row="1" Grid.Column="0" Content="_End:" Target="endTime"/>
-            <DatePickerTextBox Grid.Row="1" Grid.Column="1" Width="300" x:Name="endTime"/>
+            <xctk:DateTimePicker Grid.Row="1" Grid.Column="1" Width="300" x:Name="endTime">
+                <xctk:DateTimePicker.Value>
+                    <Binding Path="EndTime">
+                        <Binding.ValidationRules>
+                            <DataErrorValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:DateTimePicker.Value>
+            </xctk:DateTimePicker>
 
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">
-                <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding UpdateTaskCommand}"/>
+                <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding UpdateTimeBlockCommand}"/>
                 <Button IsCancel="True" Content="_Cancel" Width="70"/>
             </StackPanel>
         </Grid>

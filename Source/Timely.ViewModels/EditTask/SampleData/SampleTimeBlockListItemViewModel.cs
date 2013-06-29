@@ -6,6 +6,9 @@
     public class SampleTimeBlockListItemViewModel : ViewModelBase, ITimeBlockListItemViewModel
     {
         public DateTime Date { get; set; }
+        
+        public Guid Id { get; private set; }
+        
         public TimeSpan Time { get; set; }
     }
 }

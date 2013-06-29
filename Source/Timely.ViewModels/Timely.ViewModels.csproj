@@ -69,6 +69,7 @@
     <Compile Include="EditTask\IEditTimeBlocksViewModelFactory.cs" />
     <Compile Include="EditTask\IEditTimeBlockView.cs" />
     <Compile Include="EditTask\IEditTimeBlockViewModel.cs" />
+    <Compile Include="EditTask\IEditTimeBlockViewModelFactory.cs" />
     <Compile Include="EditTask\ITimeBlockListItemViewModel.cs" />
     <Compile Include="EditTask\ITimeBlockListItemViewModelFactory.cs" />
     <Compile Include="EditTask\SampleData\SampleEditTaskViewModel.cs" />
