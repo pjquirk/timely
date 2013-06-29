@@ -73,14 +73,14 @@
                         <DataGridTemplateColumn Header="Date" Width="SizeToCells" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Date}" HorizontalAlignment="Center" Margin="3,0"/>
+                                    <TextBlock Text="{Binding Date}" HorizontalAlignment="Left" Margin="3,0"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Time" Width="Auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Time, Converter={StaticResource timeToHmsAndStringConverter}}" Margin="3,0"/>
+                                    <TextBlock Text="{Binding Time, Converter={StaticResource timeToHmsAndStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

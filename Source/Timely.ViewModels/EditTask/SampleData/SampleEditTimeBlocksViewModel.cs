@@ -15,13 +15,13 @@
                                 {
                                     Date = DateTime.Now,
                                     Time =
-                                        TimeSpan.FromHours(1.1)
+                                        TimeSpan.FromHours(0.1)
                                 },
                             new SampleTimeBlockListItemViewModel
                                 {
                                     Date = DateTime.Now,
                                     Time =
-                                        TimeSpan.FromHours(2.2)
+                                        TimeSpan.FromHours(0.8)
                                 },
                             new SampleTimeBlockListItemViewModel
                                 {
