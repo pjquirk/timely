@@ -32,6 +32,7 @@
             this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
             this.editTimeBlockViewFactory = editTimeBlockViewFactory;
             this.editTimeBlockViewModelFactory = editTimeBlockViewModelFactory;
+            HideTimesBeforeToday = true;
             CreateCommands();
             PopulateItems();
             SubscribeToTimeBlocksModelEvents();
@@ -42,6 +43,8 @@
         public ICommand DeleteSelectedTimeBlockCommand { get; private set; }
 
         public ICommand EditSelectedTimeBlockCommand { get; private set; }
+
+        public bool HideTimesBeforeToday { get; set; }
 
         public ObservableCollection<ITimeBlockListItemViewModel> Items { get; private set; }
 

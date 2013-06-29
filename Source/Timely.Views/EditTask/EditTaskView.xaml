@@ -38,6 +38,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -70,14 +71,14 @@
                         <KeyBinding Key="Delete" Command="{Binding Path=DeleteSelectedTaskCommand}"/>
                     </DataGrid.InputBindings>-->
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Date" Width="SizeToCells" IsReadOnly="True">
+                        <DataGridTemplateColumn Header="Start Time" Width="SizeToCells" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Date}" HorizontalAlignment="Left" Margin="3,0"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Time" Width="Auto">
+                        <DataGridTemplateColumn Header="Duration" Width="Auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Time, Converter={StaticResource timeToHmsAndStringConverter}}" HorizontalAlignment="Right" Margin="3,0"/>
@@ -89,6 +90,7 @@
                 <Button Grid.Row="0" Grid.Column="2" Content="_Add..." Margin="0,0,0,3" Command="{Binding AddTimeBlockCommand}"/>
                 <Button Grid.Row="1" Grid.Column="2" Content="_Edit..." Margin="0,0,0,10" Command="{Binding EditSelectedTimeBlockCommand}"/>
                 <Button Grid.Row="2" Grid.Column="2" Content="De_lete" Command="{Binding DeleteSelectedTimeBlockCommand}"/>
+                <CheckBox Grid.Row="4" Grid.Column="0" Content="Hide times before today" IsChecked="{Binding HideTimesBeforeToday}" Margin="0,3,0,0"/>
             </Grid>
 
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">

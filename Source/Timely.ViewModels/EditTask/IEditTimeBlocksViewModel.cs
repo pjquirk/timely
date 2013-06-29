@@ -11,6 +11,8 @@
         ICommand DeleteSelectedTimeBlockCommand { get; }
 
         ICommand EditSelectedTimeBlockCommand { get; }
+        
+        bool HideTimesBeforeToday { get; set; }
 
         ObservableCollection<ITimeBlockListItemViewModel> Items { get; }
 

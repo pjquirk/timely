@@ -40,13 +40,15 @@
         }
 
         public ICommand AddTimeBlockCommand { get; private set; }
-        
+
         public ICommand DeleteSelectedTimeBlockCommand { get; private set; }
-        
+
         public ICommand EditSelectedTimeBlockCommand { get; private set; }
         
+        public bool HideTimesBeforeToday { get; set; }
+
         public ObservableCollection<ITimeBlockListItemViewModel> Items { get; private set; }
-        
+
         public ITimeBlockListItemViewModel SelectedItem { get; set; }
     }
 }
