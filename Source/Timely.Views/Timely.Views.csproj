@@ -64,6 +64,9 @@
     <Compile Include="AttachedBehaviors\DialogCloser.cs" />
     <Compile Include="Base\WindowBase.cs" />
     <Compile Include="Common\Timer.cs" />
+    <Compile Include="EditTask\EditTimeBlockView.xaml.cs">
+      <DependentUpon>EditTimeBlockView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditTask\EditTaskView.xaml.cs">
       <DependentUpon>EditTaskView.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="EditTask\EditTimeBlockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EditTask\EditTaskView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

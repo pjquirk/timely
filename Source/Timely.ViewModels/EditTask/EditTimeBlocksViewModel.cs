@@ -9,19 +9,25 @@
     using GalaSoft.MvvmLight.Command;
     using Timely.Models.Entities;
     using Timely.Models.Models;
+    using Timely.ViewModels.Base;
 
     public class EditTimeBlocksViewModel : ViewModelBase, IEditTimeBlocksViewModel
     {
+        readonly IViewFactory<IEditTimeBlockView> editTimeBlockViewFactory;
         readonly Guid taskId;
         readonly ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory;
         readonly ITimeBlocksModel timeBlocksModel;
 
         public EditTimeBlocksViewModel(
-            Guid taskId, ITimeBlocksModel timeBlocksModel, ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory)
+            Guid taskId,
+            ITimeBlocksModel timeBlocksModel,
+            ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory,
+            IViewFactory<IEditTimeBlockView> editTimeBlockViewFactory)
         {
             this.taskId = taskId;
             this.timeBlocksModel = timeBlocksModel;
             this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
+            this.editTimeBlockViewFactory = editTimeBlockViewFactory;
             CreateCommands();
             PopulateItems();
         }
@@ -44,13 +50,19 @@
         void CreateCommands()
         {
             AddTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
-            EditSelectedTimeBlockCommand = new RelayCommand(StubExecute, CanExecuteIfItemSelected);
+            EditSelectedTimeBlockCommand = new RelayCommand(ExecuteEditTimeBlock, CanExecuteIfItemSelected);
             DeleteSelectedTimeBlockCommand = new RelayCommand(StubExecute, CanExecuteIfItemSelected);
         }
 
         ITimeBlockListItemViewModel CreateTimeBlockListItemViewModel(TimeBlock t)
         {
             return timeBlockListItemViewModelFactory.Create(t);
+        }
+
+        void ExecuteEditTimeBlock()
+        {
+            IEditTimeBlockView editTimeBlockView = editTimeBlockViewFactory.Create();
+            editTimeBlockView.ShowDialog();
         }
 
         IEnumerable<TimeBlock> GetFinishedTimeBlocks()
