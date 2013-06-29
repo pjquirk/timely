@@ -21,14 +21,14 @@
 
         public DateTime EndTime
         {
-            get { return timeBlock.End; }
-            set { timeBlock.End = value; }
+            get { return timeBlock.End.ToLocalTime(); }
+            set { timeBlock.End = value.ToUniversalTime(); }
         }
 
         public DateTime StartTime
         {
-            get { return timeBlock.Start; }
-            set { timeBlock.Start = value; }
+            get { return timeBlock.Start.ToLocalTime(); }
+            set { timeBlock.Start = value.ToUniversalTime(); }
         }
 
         public ICommand UpdateTimeBlockCommand { get; private set; }

@@ -6,7 +6,7 @@
 
     public class TimeBlockListItemViewModel : ViewModelBase, ITimeBlockListItemViewModel
     {
-        readonly TimeBlock timeBlock;
+        TimeBlock timeBlock;
 
         public TimeBlockListItemViewModel(TimeBlock timeBlock)
         {
@@ -15,7 +15,7 @@
 
         public DateTime Date
         {
-            get { return timeBlock.Start; }
+            get { return timeBlock.Start.ToLocalTime(); }
         }
 
         public Guid Id
@@ -26,6 +26,13 @@
         public TimeSpan Time
         {
             get { return timeBlock.End - timeBlock.Start; }
+        }
+
+        public void Update(TimeBlock timeBlock)
+        {
+            this.timeBlock = timeBlock;
+            RaisePropertyChanged(() => Date);
+            RaisePropertyChanged(() => Time);
         }
     }
 }

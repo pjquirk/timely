@@ -7,6 +7,7 @@
     using System.Windows.Input;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using Timely.Models.Common;
     using Timely.Models.Entities;
     using Timely.Models.Models;
     using Timely.ViewModels.Base;
@@ -33,6 +34,7 @@
             this.editTimeBlockViewModelFactory = editTimeBlockViewModelFactory;
             CreateCommands();
             PopulateItems();
+            SubscribeToTimeBlocksModelEvents();
         }
 
         public ICommand AddTimeBlockCommand { get; private set; }
@@ -74,9 +76,21 @@
             return timeBlocksModel.GetByTask(taskId).Where(t => t.End != DateTime.MaxValue);
         }
 
+        void HandleTimeBlockUpdated(object sender, EntityEventArgs<TimeBlock> e)
+        {
+            ITimeBlockListItemViewModel item = Items.FirstOrDefault(i => i.Id == e.Entity.Id);
+            if (item != null)
+            {
+                TimeBlock timeBlock = timeBlocksModel.Get(e.Entity.Id);
+                item.Update(timeBlock);
+            }
+        }
+
         void PopulateItems()
         {
-            Items = new ObservableCollection<ITimeBlockListItemViewModel>(GetFinishedTimeBlocks().Select(CreateTimeBlockListItemViewModel));
+            Items =
+                new ObservableCollection<ITimeBlockListItemViewModel>(
+                    GetFinishedTimeBlocks().OrderByDescending(i => i.Start).Select(CreateTimeBlockListItemViewModel));
         }
 
         bool StubCanExecute()
@@ -86,6 +100,11 @@
 
         void StubExecute()
         {
+        }
+
+        void SubscribeToTimeBlocksModelEvents()
+        {
+            timeBlocksModel.EntityUpdated += HandleTimeBlockUpdated;
         }
     }
 }
