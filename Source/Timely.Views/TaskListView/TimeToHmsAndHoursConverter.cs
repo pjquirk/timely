@@ -13,9 +13,9 @@
 
             if (timeSpan.TotalHours > 1)
             {
-                timeString += string.Format("{0}:", timeSpan.Hours);
+                timeString += string.Format("{0}:{1:00}", timeSpan.Hours, timeSpan.Minutes);
             }
-            if (timeSpan.TotalMinutes > 1)
+            else if (timeSpan.TotalMinutes > 1)
             {
                 timeString += string.Format("{0}", timeSpan.Minutes);
             }

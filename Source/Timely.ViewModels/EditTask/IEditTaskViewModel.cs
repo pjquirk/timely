@@ -6,16 +6,10 @@
 
     public interface IEditTaskViewModel : IClosableViewModel
     {
-        ICommand AddTimeBlockCommand { get; }
-        
-        ICommand DeleteSelectedTimeBlockCommand { get; }
-        
         string Description { get; set; }
-        
-        ICommand EditSelectedTimeBlockCommand { get; }
 
-        ObservableCollection<ITimeBlockListItemViewModel> Items { get; }
-        
+        IEditTimeBlocksViewModel EditTimeBlocksViewModel { get; }
+
         ICommand UpdateTaskCommand { get; }
     }
 }

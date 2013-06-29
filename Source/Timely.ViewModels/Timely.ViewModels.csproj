@@ -60,12 +60,16 @@
     <Compile Include="Common\ShutDownMessage.cs" />
     <Compile Include="Common\TimeBlockMediator.cs" />
     <Compile Include="EditTask\EditTaskViewModel.cs" />
+    <Compile Include="EditTask\EditTimeBlocksViewModel.cs" />
     <Compile Include="EditTask\IEditTaskView.cs" />
     <Compile Include="EditTask\IEditTaskViewModel.cs" />
     <Compile Include="EditTask\IEditTaskViewModelFactory.cs" />
+    <Compile Include="EditTask\IEditTimeBlocksViewModel.cs" />
+    <Compile Include="EditTask\IEditTimeBlocksViewModelFactory.cs" />
     <Compile Include="EditTask\ITimeBlockListItemViewModel.cs" />
     <Compile Include="EditTask\ITimeBlockListItemViewModelFactory.cs" />
     <Compile Include="EditTask\SampleData\SampleEditTaskViewModel.cs" />
+    <Compile Include="EditTask\SampleData\SampleEditTimeBlocksViewModel.cs" />
     <Compile Include="EditTask\SampleData\SampleTimeBlockListItemViewModel.cs" />
     <Compile Include="EditTask\TimeBlockListItemViewModel.cs" />
     <Compile Include="Main\ApplicationCaptionMediator.cs" />

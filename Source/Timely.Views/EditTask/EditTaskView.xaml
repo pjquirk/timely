@@ -32,7 +32,7 @@
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" x:Name="description"/>
             
             <Label Grid.Row="1" Grid.Column="0" Content="_History:" Target="history"/>
-            <Grid Grid.Row="1" Grid.Column="1" Margin="0,3,0,0">
+            <Grid DataContext="{Binding EditTimeBlocksViewModel}" Grid.Row="1" Grid.Column="1" Margin="0,3,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>

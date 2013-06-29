@@ -1,8 +1,6 @@
 ﻿namespace Timely.ViewModels.EditTask
 {
     using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Timely.Models.Entities;
@@ -13,29 +11,14 @@
     {
         readonly Task task;
         readonly ITasksModel tasksModel;
-        readonly ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory;
-        readonly ITimeBlocksModel timeBlocksModel;
 
-        public EditTaskViewModel(
-            Guid taskId,
-            ITasksModel tasksModel,
-            ITimeBlocksModel timeBlocksModel,
-            ITimeBlockListItemViewModelFactory timeBlockListItemViewModelFactory)
+        public EditTaskViewModel(Guid taskId, ITasksModel tasksModel, IEditTimeBlocksViewModelFactory editTimeBlocksViewModelFactory)
         {
-            UpdateTaskCommand = new RelayCommand(UpdateTaskExecute);
-            AddTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
-            EditSelectedTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
-            DeleteSelectedTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
             this.tasksModel = tasksModel;
-            this.timeBlocksModel = timeBlocksModel;
-            this.timeBlockListItemViewModelFactory = timeBlockListItemViewModelFactory;
             task = tasksModel.Get(taskId);
-            PopulateItems();
+            UpdateTaskCommand = new RelayCommand(UpdateTaskExecute);
+            EditTimeBlocksViewModel = editTimeBlocksViewModelFactory.Create(taskId);
         }
-
-        public ICommand AddTimeBlockCommand { get; private set; }
-
-        public ICommand DeleteSelectedTimeBlockCommand { get; private set; }
 
         public string Description
         {
@@ -47,32 +30,9 @@
             }
         }
 
-        public ICommand EditSelectedTimeBlockCommand { get; private set; }
-
-        public ObservableCollection<ITimeBlockListItemViewModel> Items { get; private set; }
+        public IEditTimeBlocksViewModel EditTimeBlocksViewModel { get; private set; }
 
         public ICommand UpdateTaskCommand { get; private set; }
-
-        ITimeBlockListItemViewModel CreateTimeBlockListItemViewModel(TimeBlock t)
-        {
-            return timeBlockListItemViewModelFactory.Create(t);
-        }
-
-        void PopulateItems()
-        {
-            Items =
-                new ObservableCollection<ITimeBlockListItemViewModel>(
-                    timeBlocksModel.GetByTask(task.Id).Where(t => t.End != DateTime.MaxValue).Select(CreateTimeBlockListItemViewModel));
-        }
-
-        bool StubCanExecute()
-        {
-            return false;
-        }
-
-        void StubExecute()
-        {
-        }
 
         void UpdateTaskExecute()
         {
