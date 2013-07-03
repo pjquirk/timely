@@ -71,12 +71,22 @@
         {
             AddTimeBlockCommand = new RelayCommand(StubExecute, StubCanExecute);
             EditSelectedTimeBlockCommand = new RelayCommand(ExecuteEditTimeBlock, CanExecuteIfItemSelected);
-            DeleteSelectedTimeBlockCommand = new RelayCommand(StubExecute, CanExecuteIfItemSelected);
+            DeleteSelectedTimeBlockCommand = new RelayCommand(ExecuteDeleteTimeBlock, CanExecuteIfItemSelected);
         }
 
         ITimeBlockListItemViewModel CreateTimeBlockListItemViewModel(TimeBlock t)
         {
             return timeBlockListItemViewModelFactory.Create(t);
+        }
+
+        void ExecuteDeleteTimeBlock()
+        {
+            // are you sure?
+            Guid idToDelete = SelectedItem.Id;
+            timeBlocksModel.Delete(idToDelete);
+            ITimeBlockListItemViewModel item = Items.FirstOrDefault(i => i.Id == idToDelete);
+            if (item != null)
+                Items.Remove(item);
         }
 
         void ExecuteEditTimeBlock()
