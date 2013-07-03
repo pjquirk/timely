@@ -10,6 +10,7 @@
     {
         readonly IActiveTaskController activeTaskController;
         readonly ITimeBlocksModel timeBlocksModel;
+        TimeBlock activeTimeBlock;
 
         public TimeBlockMediator(IActiveTaskController activeTaskController, ITimeBlocksModel timeBlocksModel)
         {
@@ -25,13 +26,14 @@
 
         void HandleTaskStarted(object sender, EntityIdEventArgs e)
         {
-            timeBlocksModel.Add(e.Id, Now);
+            activeTimeBlock = timeBlocksModel.Add(e.Id, Now);
         }
 
         void HandleTaskStopped(object sender, EntityIdEventArgs e)
         {
-            TimeBlock timeBlock = timeBlocksModel.GetByTask(e.Id).Single(t => t.End == DateTime.MaxValue);
-            timeBlock.End = Now;
+            activeTimeBlock.End = Now;
+            timeBlocksModel.Update(activeTimeBlock);
+            activeTimeBlock = null;
         }
 
         void SubscribeToActiveTaskControllerEvents()

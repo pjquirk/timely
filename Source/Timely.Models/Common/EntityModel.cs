@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Timely.Models.Entities;
 
     public abstract class EntityModel<T> : IEntityModel<T>
@@ -31,23 +32,23 @@
 
         public T Get(Guid id)
         {
-            return EntityDictionary[id];
+            return EntityDictionary[id].Clone();
         }
 
         public IEnumerable<T> GetAll()
         {
-            return EntityDictionary.Values;
+            return EntityDictionary.Values.Select(e => e.Clone());
         }
 
         public void Update(T entity)
         {
-            EntityDictionary[entity.Id] = entity;
+            EntityDictionary[entity.Id] = entity.Clone();
             OnEntityUpdated(entity);
         }
 
         protected void AddToStore(T entity)
         {
-            EntityDictionary.Add(entity.Id, entity);
+            EntityDictionary.Add(entity.Id, entity.Clone());
             OnEntityAdded(entity);
         }
 

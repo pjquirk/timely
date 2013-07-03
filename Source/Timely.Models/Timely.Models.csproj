@@ -53,6 +53,7 @@
     <Compile Include="Common\IEntityCreator.cs" />
     <Compile Include="Common\IEntityModel.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityExtensions.cs" />
     <Compile Include="Entities\Task.cs" />
     <Compile Include="Entities\TimeBlock.cs" />
     <Compile Include="ModelsAssemblyInstaller.cs" />

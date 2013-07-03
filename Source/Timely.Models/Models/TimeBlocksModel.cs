@@ -23,7 +23,7 @@
 
         public IEnumerable<TimeBlock> GetByTask(Guid taskId)
         {
-            return EntityDictionary.Values.Where(t => t.TaskId == taskId);
+            return GetAll().Where(t => t.TaskId == taskId);
         }
 
         TimeBlock CreateEntity(Guid taskId, DateTime start)
