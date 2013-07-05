@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timely.Main", "Timely.Main\Timely.Main.csproj", "{52CF109D-08CD-43FC-A2BE-F17693FFE979}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timely.Views", "Timely.Views\Timely.Views.csproj", "{DD6DE01A-ACB2-4221-AB75-B00AF795D962}"
@@ -10,6 +10,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timely.Models", "Timely.Models\Timely.Models.csproj", "{DEA4B1C7-B800-4333-B479-3CBB461ED251}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timely.Common", "Timely.Common\Timely.Common.csproj", "{16DDEA0B-6C33-4E54-A0C1-05B08059B924}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2C7693C7-27CD-4CD3-ABBD-E18B4206B2D9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
