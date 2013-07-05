@@ -74,7 +74,7 @@
 
         ITaskListItemViewModel CreateItemViewModel(Task task)
         {
-            return taskListItemViewModelFactory.Create(task);
+            return taskListItemViewModelFactory.Create(task, this);
         }
 
         void HandleActiveTaskIdChanged(object sender, EntityIdEventArgs e)

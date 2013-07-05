@@ -4,6 +4,6 @@
 
     public interface ITaskListItemViewModelFactory
     {
-        ITaskListItemViewModel Create(Task task);
+        ITaskListItemViewModel Create(Task task, ITaskListViewModel taskListViewModel);
     }
 }
