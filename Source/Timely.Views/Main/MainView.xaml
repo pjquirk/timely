@@ -39,8 +39,10 @@
         <StatusBar Grid.Row="2" DataContext="{Binding StatusBarViewModel}">
             <StatusBar.Resources>
                 <main:StartTimeValueConverter x:Key="startTimeValueConverter"/>
+                <main:IdleTimeValueConverter x:Key="idleTimeValueConverter"/>
             </StatusBar.Resources>
-            <TextBlock Text="{Binding DayStartTime, Converter={StaticResource startTimeValueConverter}}"/>
+            <StatusBarItem Content="{Binding DayStartTime, Converter={StaticResource startTimeValueConverter}}"/>
+            <StatusBarItem Content="{Binding IdleTime, Converter={StaticResource idleTimeValueConverter}}" HorizontalAlignment="Right"/>
         </StatusBar>
     </Grid>
 </srcBase:WindowBase>

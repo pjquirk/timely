@@ -93,6 +93,7 @@
     <Compile Include="EditTask\EditTaskView.xaml.cs">
       <DependentUpon>EditTaskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Main\IdleTimeValueConverter.cs" />
     <Compile Include="Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
