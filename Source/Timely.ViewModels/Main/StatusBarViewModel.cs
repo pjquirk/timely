@@ -12,6 +12,7 @@
         readonly IActiveTaskController activeTaskController;
         DateTime dayStartTime;
         IIdleTimeSummer idleTimeSummer;
+        TimeSpan idleTime;
 
         public StatusBarViewModel(
             ITimeBlocksModel timeBlocksModel, IActiveTaskController activeTaskController, IIdleTimeSummerFactory idleTimeSummerFactory)
@@ -38,7 +39,21 @@
             }
         }
 
-        public TimeSpan IdleTime { get; set; }
+        public TimeSpan IdleTime
+        {
+            get
+            {
+                return idleTime;
+            }
+            set
+            {
+                if (idleTime != value)
+                {
+                    idleTime = value;
+                    RaisePropertyChanged(() => IdleTime);
+                }
+            }
+        }
 
         void ExtractStartTime(ITimeBlocksModel timeBlocksModel)
         {
