@@ -19,11 +19,6 @@
             ExtractStartTime(timeBlocksModel);
         }
 
-        void SubscribeToActiveTaskEvents()
-        {
-            activeTaskController.TaskStarted += HandleTaskStarted;
-        }
-
         public DateTime DayStartTime
         {
             get
@@ -49,6 +44,11 @@
         {
             if (DayStartTime == DateTime.MinValue)
                 DayStartTime = DateTime.Now;
+        }
+
+        void SubscribeToActiveTaskEvents()
+        {
+            activeTaskController.TaskStarted += HandleTaskStarted;
         }
     }
 }
