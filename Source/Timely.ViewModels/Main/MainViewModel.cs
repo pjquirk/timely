@@ -13,16 +13,21 @@
         public MainViewModel(
             INewTaskCommand newTaskCommand,
             ITaskListViewModel taskListViewModel,
+            IStatusBarViewModel statusBarViewModel,
             IApplicationCaptionMediatorFactory applicationCaptionMediatorFactory)
         {
             NewTaskCommand = newTaskCommand;
             TaskListViewModel = taskListViewModel;
+            StatusBarViewModel = statusBarViewModel;
             applicationCaptionMediator = applicationCaptionMediatorFactory.Create(this);
         }
 
         public string Caption
         {
-            get { return caption; }
+            get
+            {
+                return caption;
+            }
             set
             {
                 caption = value;
@@ -31,6 +36,8 @@
         }
 
         public ICommand NewTaskCommand { get; private set; }
+
+        public IStatusBarViewModel StatusBarViewModel { get; private set; }
 
         public ITaskListViewModel TaskListViewModel { get; private set; }
     }

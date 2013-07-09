@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
@@ -35,5 +36,8 @@
         <Border Grid.Row="1" BorderThickness="1">
             <taskListView:TaskListView DataContext="{Binding TaskListViewModel}"/>
         </Border>
+        <StatusBar Grid.Row="2" DataContext="{Binding StatusBarViewModel}">
+            <TextBlock Text="Foo"></TextBlock>
+        </StatusBar>
     </Grid>
 </srcBase:WindowBase>

@@ -87,8 +87,10 @@
     <Compile Include="Main\IApplicationLauncher.cs" />
     <Compile Include="Main\IMainView.cs" />
     <Compile Include="Main\IMainViewModel.cs" />
+    <Compile Include="Main\IStatusBarViewModel.cs" />
     <Compile Include="Main\MainViewModel.cs" />
     <Compile Include="Main\SampleData\SampleMainViewModel.cs" />
+    <Compile Include="Main\SampleData\SampleStatusBarViewModel.cs" />
     <Compile Include="NewTask\INewTaskCommand.cs" />
     <Compile Include="NewTask\INewTaskView.cs" />
     <Compile Include="NewTask\INewTaskViewModel.cs" />
