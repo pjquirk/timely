@@ -96,6 +96,7 @@
     <Compile Include="Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Main\StartTimeValueConverter.cs" />
     <Compile Include="NewTask\NewTaskView.xaml.cs">
       <DependentUpon>NewTaskView.xaml</DependentUpon>
     </Compile>

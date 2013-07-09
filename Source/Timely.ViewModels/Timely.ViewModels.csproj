@@ -91,6 +91,7 @@
     <Compile Include="Main\MainViewModel.cs" />
     <Compile Include="Main\SampleData\SampleMainViewModel.cs" />
     <Compile Include="Main\SampleData\SampleStatusBarViewModel.cs" />
+    <Compile Include="Main\StatusBarViewModel.cs" />
     <Compile Include="NewTask\INewTaskCommand.cs" />
     <Compile Include="NewTask\INewTaskView.cs" />
     <Compile Include="NewTask\INewTaskViewModel.cs" />
