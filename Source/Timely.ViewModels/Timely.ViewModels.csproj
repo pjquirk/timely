@@ -85,6 +85,9 @@
     <Compile Include="Main\IApplicationCaptionMediator.cs" />
     <Compile Include="Main\IApplicationCaptionMediatorFactory.cs" />
     <Compile Include="Main\IApplicationLauncher.cs" />
+    <Compile Include="Main\IdleTimeSummer.cs" />
+    <Compile Include="Main\IIdleTimeSummer.cs" />
+    <Compile Include="Main\IIdleTimeSummerFactory.cs" />
     <Compile Include="Main\IMainView.cs" />
     <Compile Include="Main\IMainViewModel.cs" />
     <Compile Include="Main\IStatusBarViewModel.cs" />
@@ -110,8 +113,6 @@
     <Compile Include="TaskList\Commands\SelectedItemCommand.cs" />
     <Compile Include="TaskList\Commands\StartTaskCommand.cs" />
     <Compile Include="TaskList\Commands\StopTaskCommand.cs" />
-    <Compile Include="TaskList\IdleTimeSummer.cs" />
-    <Compile Include="TaskList\IIdleTimeSummer.cs" />
     <Compile Include="TaskList\TaskItemTimeSummerBase.cs" />
     <Compile Include="TaskList\ITodayTimeSummerFactory.cs" />
     <Compile Include="TaskList\ITodayTimeSummer.cs" />

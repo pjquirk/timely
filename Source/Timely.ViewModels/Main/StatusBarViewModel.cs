@@ -11,10 +11,13 @@
     {
         readonly IActiveTaskController activeTaskController;
         DateTime dayStartTime;
+        IIdleTimeSummer idleTimeSummer;
 
-        public StatusBarViewModel(ITimeBlocksModel timeBlocksModel, IActiveTaskController activeTaskController)
+        public StatusBarViewModel(
+            ITimeBlocksModel timeBlocksModel, IActiveTaskController activeTaskController, IIdleTimeSummerFactory idleTimeSummerFactory)
         {
             this.activeTaskController = activeTaskController;
+            idleTimeSummer = idleTimeSummerFactory.Create(this);
             SubscribeToActiveTaskEvents();
             ExtractStartTime(timeBlocksModel);
         }
@@ -34,6 +37,8 @@
                 }
             }
         }
+
+        public TimeSpan IdleTime { get; set; }
 
         void ExtractStartTime(ITimeBlocksModel timeBlocksModel)
         {

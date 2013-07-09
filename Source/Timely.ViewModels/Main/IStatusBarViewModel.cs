@@ -6,5 +6,7 @@
     public interface IStatusBarViewModel : IViewModel
     {
         DateTime DayStartTime { get; }
+
+        TimeSpan IdleTime { get; set; }
     }
 }

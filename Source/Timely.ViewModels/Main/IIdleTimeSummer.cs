@@ -1,4 +1,4 @@
-﻿namespace Timely.ViewModels.TaskList
+﻿namespace Timely.ViewModels.Main
 {
     using Timely.ViewModels.Common;
 

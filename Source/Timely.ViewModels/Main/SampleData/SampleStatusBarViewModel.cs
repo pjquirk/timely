@@ -8,8 +8,11 @@
         public SampleStatusBarViewModel()
         {
             DayStartTime = DateTime.Now;
+            IdleTime = TimeSpan.FromMinutes(35);
         }
 
         public DateTime DayStartTime { get; set; }
+        
+        public TimeSpan IdleTime { get; set; }
     }
 }
