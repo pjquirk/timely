@@ -7,7 +7,7 @@
     using Timely.Models.Models;
     using Timely.ViewModels.Common;
 
-    public class TotalTimeSummer : TimeSummerBase, ITotalTimeSummer
+    public class TotalTimeSummer : TaskItemTimeSummerBase, ITotalTimeSummer
     {
         public TotalTimeSummer(ITaskListItemViewModel taskListItemViewModel, ITimeBlocksModel timeBlocksModel, ITimer timer)
             : base(taskListItemViewModel, timeBlocksModel, timer)

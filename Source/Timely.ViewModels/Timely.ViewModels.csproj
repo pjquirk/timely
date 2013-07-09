@@ -110,9 +110,12 @@
     <Compile Include="TaskList\Commands\SelectedItemCommand.cs" />
     <Compile Include="TaskList\Commands\StartTaskCommand.cs" />
     <Compile Include="TaskList\Commands\StopTaskCommand.cs" />
-    <Compile Include="TaskList\TimeSummerBase.cs" />
+    <Compile Include="TaskList\IdleTimeSummer.cs" />
+    <Compile Include="TaskList\IIdleTimeSummer.cs" />
+    <Compile Include="TaskList\TaskItemTimeSummerBase.cs" />
     <Compile Include="TaskList\ITodayTimeSummerFactory.cs" />
     <Compile Include="TaskList\ITodayTimeSummer.cs" />
+    <Compile Include="TaskList\TimeSummerBase.cs" />
     <Compile Include="TaskList\TodayTimeSummer.cs" />
     <Compile Include="TaskList\ITotalTimeSummerFactory.cs" />
     <Compile Include="TaskList\ITaskListItemViewModel.cs" />
