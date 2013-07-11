@@ -12,6 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -33,10 +34,22 @@
                 <MenuItem Header="Previous Day Summary..." IsEnabled="False" />
             </MenuItem>
         </Menu>
-        <Border Grid.Row="1" BorderThickness="1">
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button Content="New..." Command="{Binding NewTaskCommand}" />
+                <Button Content="Delete" Command="{Binding TaskListViewModel.DeleteSelectedTaskCommand}" />
+                <Separator/>
+                <Button Content="Start" Command="{Binding TaskListViewModel.StartSelectedTaskCommand}" />
+                <Button Content="Stop" Command="{Binding TaskListViewModel.StopSelectedTaskCommand}" />
+                <Separator/>
+                <Button Content="Move Up" Command="{Binding TaskListViewModel.MoveUpSelectedTaskCommand}" />
+                <Button Content="Move Down" Command="{Binding TaskListViewModel.MoveDownSelectedTaskCommand}" />
+            </ToolBar>
+        </ToolBarTray>
+        <Border Grid.Row="2" BorderThickness="1">
             <taskListView:TaskListView DataContext="{Binding TaskListViewModel}"/>
         </Border>
-        <StatusBar Grid.Row="2" DataContext="{Binding StatusBarViewModel}">
+        <StatusBar Grid.Row="3" DataContext="{Binding StatusBarViewModel}">
             <StatusBar.Resources>
                 <main:StartTimeValueConverter x:Key="startTimeValueConverter"/>
                 <main:IdleTimeValueConverter x:Key="idleTimeValueConverter"/>
