@@ -14,7 +14,7 @@ namespace Timely.ViewModels.TaskList.Commands
             return base.CanExecute(parameter) && SelectedItem.Index > 0;
         }
 
-        public override void Execute(object parameter)
+        protected override void ExecuteInternal()
         {
             TasksModel.SetTaskIndex(SelectedItem.Id, SelectedItem.Index - 1);
         }

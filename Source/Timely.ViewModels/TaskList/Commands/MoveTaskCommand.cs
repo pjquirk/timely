@@ -10,6 +10,14 @@ namespace Timely.ViewModels.TaskList.Commands
             TasksModel = tasksModel;
         }
 
+        public override void Execute(object parameter)
+        {
+            ExecuteInternal();
+            TaskListViewModel.RefreshIndices();
+        }
+
+        protected abstract void ExecuteInternal();
+
         protected ITasksModel TasksModel { get; private set; }
     }
 }

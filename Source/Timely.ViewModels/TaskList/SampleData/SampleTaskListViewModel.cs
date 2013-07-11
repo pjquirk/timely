@@ -49,9 +49,9 @@
         public ICommand EditSelectedTaskCommand { get; private set; }
 
         public ObservableCollection<ITaskListItemViewModel> Items { get; private set; }
-        
+
         public ICommand MoveDownSelectedTaskCommand { get; private set; }
-        
+
         public ICommand MoveUpSelectedTaskCommand { get; private set; }
 
         public ITaskListItemViewModel SelectedItem
@@ -68,6 +68,11 @@
         public ICommand StartSelectedTaskCommand { get; private set; }
 
         public ICommand StopSelectedTaskCommand { get; private set; }
+
+        public void RefreshIndices()
+        {
+            throw new NotImplementedException();
+        }
 
         protected virtual void OnSelectedItemChanged()
         {

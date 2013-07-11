@@ -74,6 +74,12 @@
 
         public ICommand StopSelectedTaskCommand { get; private set; }
 
+        public void RefreshIndices()
+        {
+            foreach (var item in Items)
+                item.Update(tasksModel.Get(item.Id));
+        }
+
         protected virtual void OnSelectedItemChanged()
         {
             EventHandler handler = SelectedItemChanged;

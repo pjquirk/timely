@@ -100,6 +100,7 @@
             this.task = task;
             RaisePropertyChanged(() => Header);
             RaisePropertyChanged(() => Id);
+            RaisePropertyChanged(() => Index);
             RaisePropertyChanged(() => TodayTime);
             RaisePropertyChanged(() => TotalTime);
         }
