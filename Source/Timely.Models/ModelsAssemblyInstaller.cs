@@ -17,6 +17,7 @@
         {
             container.Register(Component.For<ITaskListStore>().ImplementedBy<TaskListStore>().LifeStyle.Singleton);
             container.Register(Component.For<ITasksModel>().ImplementedBy<TasksModel>().LifeStyle.Singleton);
+            container.Register(Component.For<IGroupsModel>().ImplementedBy<GroupsModel>().LifeStyle.Singleton);
             container.Register(Component.For<ITimeBlocksModel>().ImplementedBy<TimeBlocksModel>().LifeStyle.Singleton);
         }
     }
