@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Windows.Input;
     using GalaSoft.MvvmLight;
 
@@ -49,6 +50,8 @@
         public ICommand EditSelectedTaskCommand { get; private set; }
 
         public ObservableCollection<ITaskListItemViewModel> Items { get; private set; }
+
+        public ICollectionView ItemsView { get; private set; }
 
         public ICommand MoveDownSelectedTaskCommand { get; private set; }
 

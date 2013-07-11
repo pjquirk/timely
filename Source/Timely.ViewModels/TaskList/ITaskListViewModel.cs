@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.ComponentModel;
     using System.Windows.Input;
     using Timely.ViewModels.Base;
 
@@ -12,6 +13,8 @@
         ICommand DeleteSelectedTaskCommand { get; }
 
         ICommand EditSelectedTaskCommand { get; }
+
+        ICollectionView ItemsView { get; }
 
         ObservableCollection<ITaskListItemViewModel> Items { get; }
 
