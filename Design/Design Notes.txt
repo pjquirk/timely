@@ -7,12 +7,7 @@ DONE - The app will keep track of blocks of time a task was worked on
 DONE - The app will reset "Today Time" counters at the start of the day
 
 Phase 2:
-- I want to be able to modify time spent on a task
-  - How do you modify it?  Do you change a timeblock or just apply a modification to the task?
-	- Add an extra "modification" block every time an edit occurs with today's date
-	- New entity, TimeModification
-		- DateTime Created
-		- TimeSpan Difference
+DONE - I want to be able to modify time spent on a task
 - I want to be able to group tasks into categories (Infra, Dev)
 	- Add "GroupId" to Task
 	- Add "Group" Entity
