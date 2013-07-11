@@ -10,6 +10,8 @@
         ICommand DeleteSelectedTaskCommand { get; }
 
         ICommand EditSelectedTaskCommand { get; }
+
+        string Group { get; }
         
         string Header { get; }
 

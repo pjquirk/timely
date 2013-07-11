@@ -4,9 +4,11 @@
     using System.Windows.Input;
     using GalaSoft.MvvmLight;
     using Timely.Models.Entities;
+    using Timely.Models.Models;
 
     public class TaskListItemViewModel : ViewModelBase, ITaskListItemViewModel
     {
+        readonly IGroupsModel groupsModel;
         readonly ITaskListViewModel taskListViewModel;
         readonly ITodayTimeSummer todayTimeSummer;
         readonly ITotalTimeSummer totalTimeSummer;
@@ -14,15 +16,18 @@
         Task task;
         TimeSpan todayTime;
         TimeSpan totalTime;
+        string group;
 
         public TaskListItemViewModel(
             Task task,
             ITaskListViewModel taskListViewModel,
+            IGroupsModel groupsModel,
             ITotalTimeSummerFactory totalTimeSummerFactory,
             ITodayTimeSummerFactory todayTimeSummerFactory)
         {
-            this.task = task;
             this.taskListViewModel = taskListViewModel;
+            this.groupsModel = groupsModel;
+            Update(task);
             totalTimeSummer = totalTimeSummerFactory.Create(this);
             todayTimeSummer = todayTimeSummerFactory.Create(this);
             // Execute so the sums show up on the GUI immediately
@@ -38,6 +43,19 @@
         public ICommand EditSelectedTaskCommand
         {
             get { return taskListViewModel.EditSelectedTaskCommand; }
+        }
+
+        public string Group
+        {
+            get { return group; }
+            private set 
+            {
+                if (group != value)
+                {
+                    group = value;
+                    RaisePropertyChanged(() => Group);
+                }
+            }
         }
 
         public string Header
@@ -103,6 +121,7 @@
             RaisePropertyChanged(() => Index);
             RaisePropertyChanged(() => TodayTime);
             RaisePropertyChanged(() => TotalTime);
+            Group = groupsModel.GetGroupName(task.GroupId);
         }
     }
 }
