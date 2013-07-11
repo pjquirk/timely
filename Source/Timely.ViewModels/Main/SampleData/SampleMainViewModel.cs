@@ -1,10 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="SampleMainViewModel.cs" company="LexisNexis">
-//   Copyright 2012 LexisNexis. All Rights Reserved.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Timely.ViewModels.Main.SampleData
+﻿namespace Timely.ViewModels.Main.SampleData
 {
     using System.Windows.Input;
     using GalaSoft.MvvmLight;
@@ -15,6 +9,7 @@ namespace Timely.ViewModels.Main.SampleData
     {
         public SampleMainViewModel()
         {
+            StatusBarViewModel = new SampleStatusBarViewModel();
             TaskListViewModel = new SampleTaskListViewModel();
         }
 
@@ -22,6 +17,8 @@ namespace Timely.ViewModels.Main.SampleData
 
         public ICommand NewTaskCommand { get; private set; }
 
+        public IStatusBarViewModel StatusBarViewModel { get; private set; }
+        
         public ITaskListViewModel TaskListViewModel { get; private set; }
     }
 }

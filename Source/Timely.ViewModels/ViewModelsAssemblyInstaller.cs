@@ -34,6 +34,7 @@ namespace Timely.ViewModels
             container.Register(Component.For<ITimeBlockListItemViewModelFactory>().AsFactory());
             container.Register(Component.For<IEditTimeBlocksViewModelFactory>().AsFactory());
             container.Register(Component.For<IEditTimeBlockViewModelFactory>().AsFactory());
+            container.Register(Component.For<IIdleTimeSummerFactory>().AsFactory());
         }
 
         protected override void RegisterSingletons(IWindsorContainer container, IConfigurationStore store)

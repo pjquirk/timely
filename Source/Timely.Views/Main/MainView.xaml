@@ -5,14 +5,15 @@
         xmlns:taskListView="clr-namespace:Timely.Views.TaskListView"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:sampleData="clr-namespace:Timely.ViewModels.Main.SampleData;assembly=Timely.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:main="clr-namespace:Timely.Views.Main"
+                    mc:Ignorable="d" 
         d:DataContext="{d:DesignInstance Type=sampleData:SampleMainViewModel, IsDesignTimeCreatable=True}"
         Title="{Binding Caption}" Height="263" Width="467">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
@@ -35,5 +36,13 @@
         <Border Grid.Row="1" BorderThickness="1">
             <taskListView:TaskListView DataContext="{Binding TaskListViewModel}"/>
         </Border>
+        <StatusBar Grid.Row="2" DataContext="{Binding StatusBarViewModel}">
+            <StatusBar.Resources>
+                <main:StartTimeValueConverter x:Key="startTimeValueConverter"/>
+                <main:IdleTimeValueConverter x:Key="idleTimeValueConverter"/>
+            </StatusBar.Resources>
+            <StatusBarItem Content="{Binding DayStartTime, Converter={StaticResource startTimeValueConverter}}"/>
+            <StatusBarItem Content="{Binding IdleTime, Converter={StaticResource idleTimeValueConverter}}" HorizontalAlignment="Right"/>
+        </StatusBar>
     </Grid>
 </srcBase:WindowBase>

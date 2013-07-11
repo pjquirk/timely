@@ -18,9 +18,7 @@ Phase 2:
 	- Add "Group" Entity
 		- string Name
   - Use groups in a DataGrid
-- I want the app to track idle time
-	- Task needs a "IsSystemOwned" field
-	- Cannot delete these tasks
+DONE - I want the app to track idle time
 - I want to be notified when the timer has been idle for N minutes
 - I want a summary of the previous day's tasks (totals only)
 
