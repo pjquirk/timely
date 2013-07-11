@@ -26,7 +26,7 @@
             Task task = EntityDictionary[id];
             if (task.Index != index)
             {
-                List<Task> tasks = EntityDictionary.Values.ToList();
+                List<Task> tasks = EntityDictionary.Values.OrderBy(t => t.Index).ToList();
 
                 index = GetSafeIndex(index, tasks);
 
