@@ -15,6 +15,8 @@
 
         Guid Id { get; }
 
+        int Index { get; }
+
         bool IsActive { get; set; }
 
         ICommand StartSelectedTaskCommand { get; }

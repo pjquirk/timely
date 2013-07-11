@@ -50,6 +50,11 @@
             get { return task.Id; }
         }
 
+        public int Index
+        {
+            get { return task.Index; }
+        }
+
         public bool IsActive
         {
             get { return isActive; }
