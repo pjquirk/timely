@@ -28,6 +28,7 @@
             ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
             ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
             ISelectedItemCommandFactory<IMoveUpTaskCommand> moveUpTaskCommandFactory,
+            ISelectedItemCommandFactory<IMoveDownTaskCommand> moveDownTaskCommandFactory,
             ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
         {
             this.tasksModel = tasksModel;
@@ -35,7 +36,12 @@
             this.activeTaskController = activeTaskController;
             timeBlockMediator = timeBlockMediatorFactory.Create(activeTaskController);
             CreateCommands(
-                startTaskCommandFactory, stopTaskCommandFactory, editTaskCommandFactory, moveUpTaskCommandFactory, deleteTaskCommandFactory);
+                startTaskCommandFactory,
+                stopTaskCommandFactory,
+                editTaskCommandFactory,
+                moveUpTaskCommandFactory,
+                moveDownTaskCommandFactory,
+                deleteTaskCommandFactory);
             PopulateItems();
             SubscribeToTaskModelEvents();
             SubscribeToActiveTaskControllerEvents();
@@ -80,14 +86,15 @@
             ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
             ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
             ISelectedItemCommandFactory<IMoveUpTaskCommand> moveUpTaskCommandFactory,
+            ISelectedItemCommandFactory<IMoveDownTaskCommand> moveDownTaskCommandFactory,
             ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
         {
             DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
             StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
             StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
             EditSelectedTaskCommand = editTaskCommandFactory.Create(this);
-            MoveDownSelectedTaskCommand = moveUpTaskCommandFactory.Create(this);
-            MoveUpSelectedTaskCommand = null;
+            MoveDownSelectedTaskCommand = moveDownTaskCommandFactory.Create(this);
+            MoveUpSelectedTaskCommand = moveUpTaskCommandFactory.Create(this);
         }
 
         ITaskListItemViewModel CreateItemViewModel(Task task)
