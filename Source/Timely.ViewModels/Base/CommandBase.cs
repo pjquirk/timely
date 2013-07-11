@@ -5,7 +5,11 @@
 
     public abstract class CommandBase : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged 
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public virtual bool CanExecute(object parameter)
         {
@@ -16,9 +20,7 @@
 
         protected virtual void OnCanExecuteChanged()
         {
-            EventHandler handler = this.CanExecuteChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }
