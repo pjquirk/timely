@@ -10,10 +10,14 @@
         event EventHandler SelectedItemChanged;
 
         ICommand DeleteSelectedTaskCommand { get; }
-        
+
         ICommand EditSelectedTaskCommand { get; }
 
         ObservableCollection<ITaskListItemViewModel> Items { get; }
+        
+        ICommand MoveDownSelectedTaskCommand { get; }
+        
+        ICommand MoveUpSelectedTaskCommand { get; }
 
         ITaskListItemViewModel SelectedItem { get; set; }
 

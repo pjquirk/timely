@@ -16,8 +16,8 @@
         readonly IActiveTaskController activeTaskController;
         readonly ITaskListItemViewModelFactory taskListItemViewModelFactory;
         readonly ITasksModel tasksModel;
-        readonly ITimeBlockMediator timeBlockMediator;
         ITaskListItemViewModel selectedItem;
+        ITimeBlockMediator timeBlockMediator;
 
         public TaskListViewModel(
             ITasksModel tasksModel,
@@ -27,16 +27,15 @@
             ISelectedItemCommandFactory<IStartTaskCommand> startTaskCommandFactory,
             ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
             ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
+            ISelectedItemCommandFactory<IMoveUpTaskCommand> moveUpTaskCommandFactory,
             ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
         {
             this.tasksModel = tasksModel;
             this.taskListItemViewModelFactory = taskListItemViewModelFactory;
             this.activeTaskController = activeTaskController;
             timeBlockMediator = timeBlockMediatorFactory.Create(activeTaskController);
-            DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
-            StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
-            StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
-            EditSelectedTaskCommand = editTaskCommandFactory.Create(this);
+            CreateCommands(
+                startTaskCommandFactory, stopTaskCommandFactory, editTaskCommandFactory, moveUpTaskCommandFactory, deleteTaskCommandFactory);
             PopulateItems();
             SubscribeToTaskModelEvents();
             SubscribeToActiveTaskControllerEvents();
@@ -49,6 +48,10 @@
         public ICommand EditSelectedTaskCommand { get; private set; }
 
         public ObservableCollection<ITaskListItemViewModel> Items { get; private set; }
+
+        public ICommand MoveDownSelectedTaskCommand { get; private set; }
+
+        public ICommand MoveUpSelectedTaskCommand { get; private set; }
 
         public ITaskListItemViewModel SelectedItem
         {
@@ -70,6 +73,21 @@
             EventHandler handler = SelectedItemChanged;
             if (handler != null)
                 handler(this, EventArgs.Empty);
+        }
+
+        void CreateCommands(
+            ISelectedItemCommandFactory<IStartTaskCommand> startTaskCommandFactory,
+            ISelectedItemCommandFactory<IStopTaskCommand> stopTaskCommandFactory,
+            ISelectedItemCommandFactory<IEditTaskCommand> editTaskCommandFactory,
+            ISelectedItemCommandFactory<IMoveUpTaskCommand> moveUpTaskCommandFactory,
+            ISelectedItemCommandFactory<IDeleteTaskCommand> deleteTaskCommandFactory)
+        {
+            DeleteSelectedTaskCommand = deleteTaskCommandFactory.Create(this);
+            StartSelectedTaskCommand = startTaskCommandFactory.Create(this);
+            StopSelectedTaskCommand = stopTaskCommandFactory.Create(this);
+            EditSelectedTaskCommand = editTaskCommandFactory.Create(this);
+            MoveDownSelectedTaskCommand = moveUpTaskCommandFactory.Create(this);
+            MoveUpSelectedTaskCommand = null;
         }
 
         ITaskListItemViewModel CreateItemViewModel(Task task)

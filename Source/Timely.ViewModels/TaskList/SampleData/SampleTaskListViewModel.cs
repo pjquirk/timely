@@ -49,6 +49,10 @@
         public ICommand EditSelectedTaskCommand { get; private set; }
 
         public ObservableCollection<ITaskListItemViewModel> Items { get; private set; }
+        
+        public ICommand MoveDownSelectedTaskCommand { get; private set; }
+        
+        public ICommand MoveUpSelectedTaskCommand { get; private set; }
 
         public ITaskListItemViewModel SelectedItem
         {

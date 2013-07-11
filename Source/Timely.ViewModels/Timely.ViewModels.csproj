@@ -102,6 +102,8 @@
     <Compile Include="NewTask\NewTaskViewModel.cs" />
     <Compile Include="NewTask\SampleData\SampleNewTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskList\Commands\IMoveDownTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\IMoveUpTaskCommand.cs" />
     <Compile Include="TaskList\Commands\DeleteTaskCommand.cs" />
     <Compile Include="TaskList\Commands\EditTaskCommand.cs" />
     <Compile Include="TaskList\Commands\IDeleteTaskCommand.cs" />
@@ -110,6 +112,8 @@
     <Compile Include="TaskList\Commands\ISelectedItemCommandFactory.cs" />
     <Compile Include="TaskList\Commands\IStartTaskCommand.cs" />
     <Compile Include="TaskList\Commands\IStopTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\MoveDownTaskCommand.cs" />
+    <Compile Include="TaskList\Commands\MoveUpTaskCommand.cs" />
     <Compile Include="TaskList\Commands\SelectedItemCommand.cs" />
     <Compile Include="TaskList\Commands\StartTaskCommand.cs" />
     <Compile Include="TaskList\Commands\StopTaskCommand.cs" />
