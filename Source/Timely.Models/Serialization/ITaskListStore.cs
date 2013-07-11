@@ -6,6 +6,8 @@
 
     public interface ITaskListStore
     {
+        IDictionary<Guid, Group> Groups { get; }
+
         IDictionary<Guid, Task> Tasks { get; }
 
         IDictionary<Guid, TimeBlock> TimeBlocks { get; }

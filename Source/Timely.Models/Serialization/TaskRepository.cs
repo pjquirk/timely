@@ -10,9 +10,13 @@
     {
         public TaskRepository()
         {
+            Groups = new Dictionary<Guid, Group>();
             Tasks = new Dictionary<Guid, Task>();
             TimeBlocks = new Dictionary<Guid, TimeBlock>();
         }
+
+        [DataMember]
+        public IDictionary<Guid, Group> Groups { get; private set; }
 
         [DataMember]
         public IDictionary<Guid, Task> Tasks { get; private set; }

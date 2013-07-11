@@ -20,6 +20,11 @@
             taskRepository = new TaskRepository();
         }
 
+        public IDictionary<Guid, Group> Groups
+        {
+            get { return taskRepository.Groups; }
+        }
+
         public IDictionary<Guid, Task> Tasks
         {
             get { return taskRepository.Tasks; }

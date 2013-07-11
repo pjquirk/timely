@@ -1,14 +1,14 @@
 ﻿namespace Timely.Models.Models
 {
     using System;
-    using System.Collections.Generic;
     using Timely.Models.Common;
     using Timely.Models.Entities;
+    using Timely.Models.Serialization;
 
     public class GroupsModel : EntityModel<Group>, IGroupsModel
     {
-        public GroupsModel(IDictionary<Guid, Group> entityDictionary, IEntityCreator<Group> entityCreator)
-            : base(entityDictionary, entityCreator)
+        public GroupsModel(ITaskListStore taskListStore, IEntityCreator<Group> entityCreator)
+            : base(taskListStore.Groups, entityCreator)
         {
         }
 
@@ -17,6 +17,13 @@
             Group group = CreateEntity(name);
             AddToStore(group);
             return group;
+        }
+
+        public string GetGroupName(Guid groupId)
+        {
+            if (groupId == Guid.Empty)
+                return null;
+            return Get(groupId).Name;
         }
 
         Group CreateEntity(string description)
