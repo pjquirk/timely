@@ -93,6 +93,9 @@
     <Compile Include="EditTask\EditTaskView.xaml.cs">
       <DependentUpon>EditTaskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Groups\GroupSelector.xaml.cs">
+      <DependentUpon>GroupSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Main\IdleTimeValueConverter.cs" />
     <Compile Include="Main\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -128,6 +131,10 @@
     <Page Include="EditTask\EditTaskView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Groups\GroupSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Main\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>

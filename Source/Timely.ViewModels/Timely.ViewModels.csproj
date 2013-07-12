@@ -83,6 +83,8 @@
     <Compile Include="EditTask\SampleData\SampleEditTimeBlockViewModel.cs" />
     <Compile Include="EditTask\SampleData\SampleTimeBlockListItemViewModel.cs" />
     <Compile Include="EditTask\TimeBlockListItemViewModel.cs" />
+    <Compile Include="Groups\IGroupSelectorViewModel.cs" />
+    <Compile Include="Groups\SampleData\SampleGroupSelectorViewModel.cs" />
     <Compile Include="Main\ApplicationCaptionMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
     <Compile Include="Main\IApplicationCaptionMediator.cs" />

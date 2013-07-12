@@ -6,6 +6,7 @@
                     xmlns:sampleData="clr-namespace:Timely.ViewModels.NewTask.SampleData;assembly=Timely.ViewModels"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
+                    xmlns:groups="clr-namespace:Timely.Views.Groups"
                     mc:Ignorable="d" 
                     d:DataContext="{d:DesignInstance Type=sampleData:SampleNewTaskViewModel, IsDesignTimeCreatable=True}"
                     Title="Create New Task"
@@ -20,6 +21,8 @@
             <Label Content="_Enter a description of the task:" Target="description"/>
             <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="350" Margin="7,0,7,0" x:Name="description"/>
         
+            <groups:GroupSelector DataContext="{Binding GroupSelectorViewModel}" Margin="7,7,7,0" />
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding CreateTaskCommand}"/>
                 <Button IsCancel="True" Content="_Cancel" Width="70"/>
