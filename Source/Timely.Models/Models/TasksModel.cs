@@ -59,7 +59,15 @@
             Task task = EntityCreator.Create();
             task.Description = description;
             task.GroupId = groupId;
+            task.Index = GetNewTaskIndex();
             return task;
+        }
+
+        int GetNewTaskIndex()
+        {
+            if (EntityDictionary.Count > 0)
+                return EntityDictionary.Values.Max(t => t.Index) + 1;
+            return 0;
         }
     }
 }
