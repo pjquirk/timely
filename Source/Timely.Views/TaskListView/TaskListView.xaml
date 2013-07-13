@@ -98,9 +98,7 @@
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Path=Name}" />
-                            </StackPanel>
+                            <TextBlock Text="{Binding Path=Name}" />
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
                     <GroupStyle.ContainerStyle>
@@ -110,16 +108,14 @@
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
                                         <Expander IsExpanded="True">
                                             <Expander.Header>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock>
-                                                        <TextBlock.Text>
-                                                            <MultiBinding StringFormat="{}{0}: {1} items">
-                                                                <Binding Path="Name"/>
-                                                                <Binding Path="ItemCount"/>
-                                                            </MultiBinding>
-                                                        </TextBlock.Text>
-                                                    </TextBlock>
-                                                </StackPanel>
+                                                <TextBlock>
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="{}{0}: {1} items">
+                                                            <Binding Path="Name"/>
+                                                            <Binding Path="ItemCount"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
                                             </Expander.Header>
                                             <ItemsPresenter />
                                         </Expander>
