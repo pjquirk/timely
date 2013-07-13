@@ -22,7 +22,7 @@
 
         public ICommand NewGroupCommand { get; private set; }
         
-        public Guid SelectedGroupId { get; private set; }
+        public Guid SelectedGroupId { get; set; }
 
         public IGroupListItemViewModel SelectedItem { get; set; }
     }

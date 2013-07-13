@@ -7,6 +7,7 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:attachedBehaviors="clr-namespace:Timely.Views.AttachedBehaviors"
                     xmlns:taskListView="clr-namespace:Timely.Views.TaskListView"
+                    xmlns:groups="clr-namespace:Timely.Views.Groups"
                     mc:Ignorable="d" 
                     d:DataContext="{d:DesignInstance Type=sampleData:SampleEditTaskViewModel, IsDesignTimeCreatable=True}"
                     Title="Edit Task"
@@ -22,6 +23,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -30,9 +32,12 @@
             
             <Label Grid.Row="0" Grid.Column="0" Content="_Description:" Target="description"/>
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="300" x:Name="description"/>
-            
-            <Label Grid.Row="1" Grid.Column="0" Content="_History:" Target="history"/>
-            <Grid DataContext="{Binding EditTimeBlocksViewModel}" Grid.Row="1" Grid.Column="1" Margin="0,3,0,0">
+
+            <Label Grid.Row="1" Content="Group:"/>
+            <groups:GroupSelector Grid.Row="1" Grid.Column="1" DataContext="{Binding GroupSelectorViewModel}" Margin="0,3,0,5"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="_History:" Target="history"/>
+            <Grid DataContext="{Binding EditTimeBlocksViewModel}" Grid.Row="2" Grid.Column="1" Margin="0,3,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -99,7 +104,7 @@
                 <CheckBox Grid.Row="4" Grid.Column="0" Content="Hide times before today" IsChecked="{Binding HideTimesBeforeToday}" Margin="0,3,0,0"/>
             </Grid>
 
-            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,7,0,0">
                 <Button IsDefault="True" Content="_OK" Width="70" Margin="0,0,7,0" Command="{Binding UpdateTaskCommand}"/>
                 <Button IsCancel="True" Content="_Cancel" Width="70"/>
             </StackPanel>

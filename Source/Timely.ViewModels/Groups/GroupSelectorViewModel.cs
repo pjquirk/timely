@@ -38,6 +38,7 @@
                     return SelectedItem.Id;
                 return Guid.Empty;
             }
+            set { SelectedItem = GroupNames.FirstOrDefault(i => i.Id == value); }
         }
 
         public IGroupListItemViewModel SelectedItem
@@ -47,6 +48,7 @@
             {
                 selectedItem = value;
                 RaisePropertyChanged(() => SelectedItem);
+                RaisePropertyChanged(() => SelectedGroupId);
             }
         }
 

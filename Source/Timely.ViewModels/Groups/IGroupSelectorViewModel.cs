@@ -11,7 +11,7 @@
 
         ICommand NewGroupCommand { get; }
 
-        Guid SelectedGroupId { get; }
+        Guid SelectedGroupId { get; set;  }
 
         IGroupListItemViewModel SelectedItem { get; set; }
     }
