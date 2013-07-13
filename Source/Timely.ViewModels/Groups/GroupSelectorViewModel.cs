@@ -13,6 +13,7 @@
     {
         readonly IGroupListItemViewModelFactory groupListItemViewModelFactory;
         readonly IGroupsModel groupsModel;
+        IGroupListItemViewModel selectedItem;
 
         public GroupSelectorViewModel(
             IGroupsModel groupsModel, INewGroupCommand newGroupCommand, IGroupListItemViewModelFactory groupListItemViewModelFactory)
@@ -39,7 +40,15 @@
             }
         }
 
-        public IGroupListItemViewModel SelectedItem { get; set; }
+        public IGroupListItemViewModel SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                RaisePropertyChanged(() => SelectedItem);
+            }
+        }
 
         IGroupListItemViewModel CreateItem(Group group)
         {
@@ -48,7 +57,9 @@
 
         void HandleEntityAdded(object sender, EntityEventArgs<Group> e)
         {
-            GroupNames.Add(CreateItem(e.Entity.Clone()));
+            IGroupListItemViewModel groupListItemViewModel = CreateItem(e.Entity.Clone());
+            GroupNames.Add(groupListItemViewModel);
+            SelectedItem = groupListItemViewModel;
         }
 
         void HandleEntityDeleted(object sender, EntityIdEventArgs e)
