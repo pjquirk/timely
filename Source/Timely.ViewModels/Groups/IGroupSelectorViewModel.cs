@@ -6,7 +6,7 @@
 
     public interface IGroupSelectorViewModel : IViewModel
     {
-        ObservableCollection<string> GroupNames { get; }
+        ObservableCollection<IGroupListItemViewModel> GroupNames { get; }
 
         ICommand NewGroupCommand { get; }
     }

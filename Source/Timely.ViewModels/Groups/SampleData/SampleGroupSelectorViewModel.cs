@@ -8,10 +8,10 @@
     {
         public SampleGroupSelectorViewModel()
         {
-            GroupNames = new ObservableCollection<string> { "Group 1", "Group 2", "Group 3" };
+            GroupNames = new ObservableCollection<IGroupListItemViewModel>();
         }
 
-        public ObservableCollection<string> GroupNames { get; private set; }
+        public ObservableCollection<IGroupListItemViewModel> GroupNames { get; private set; }
         
         public ICommand NewGroupCommand { get; private set; }
     }
