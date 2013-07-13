@@ -17,12 +17,14 @@
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 1",
+                                    Group = "Group 1",
                                     TotalTime = TimeSpan.FromMinutes(30),
                                     TodayTime = TimeSpan.FromMinutes(10)
                                 },
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 2",
+                                    Group = "Group 2",
                                     TotalTime = TimeSpan.FromMinutes(30),
                                     TodayTime = TimeSpan.FromMinutes(10),
                                     IsActive = true
@@ -30,6 +32,7 @@
                             new SampleTaskListItemViewModel
                                 {
                                     Header = "Item 3",
+                                    Group = "Group 2",
                                     TotalTime = TimeSpan.FromMinutes(30),
                                     TodayTime = TimeSpan.FromMinutes(10)
                                 },

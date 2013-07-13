@@ -146,6 +146,7 @@
             Items = new ObservableCollection<ITaskListItemViewModel>(tasksModel.GetAll().Select(CreateItemViewModel));
             ItemsView = CollectionViewSource.GetDefaultView(Items);
             ItemsView.SortDescriptions.Add(new SortDescription("Index", ListSortDirection.Ascending));
+            ItemsView.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
         }
 
         void SubscribeToActiveTaskControllerEvents()

@@ -11,7 +11,7 @@
         
         public ICommand EditSelectedTaskCommand { get; private set; }
         
-        public string Group { get; private set; }
+        public string Group { get; set; }
 
         public string Header { get; set; }
 
