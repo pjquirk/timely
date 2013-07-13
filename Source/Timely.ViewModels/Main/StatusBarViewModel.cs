@@ -11,8 +11,8 @@
     {
         readonly IActiveTaskController activeTaskController;
         DateTime dayStartTime;
-        IIdleTimeSummer idleTimeSummer;
         TimeSpan idleTime;
+        IIdleTimeSummer idleTimeSummer;
 
         public StatusBarViewModel(
             ITimeBlocksModel timeBlocksModel, IActiveTaskController activeTaskController, IIdleTimeSummerFactory idleTimeSummerFactory)
@@ -25,10 +25,7 @@
 
         public DateTime DayStartTime
         {
-            get
-            {
-                return dayStartTime;
-            }
+            get { return dayStartTime; }
             private set
             {
                 if (dayStartTime != value)
@@ -41,10 +38,7 @@
 
         public TimeSpan IdleTime
         {
-            get
-            {
-                return idleTime;
-            }
+            get { return idleTime; }
             set
             {
                 if (idleTime != value)
@@ -64,11 +58,21 @@
         {
             if (DayStartTime == DateTime.MinValue)
                 DayStartTime = DateTime.Now;
+
+            // Execute right away to look responsive
+            idleTimeSummer.Execute();
+        }
+
+        void HandleTaskStopped(object sender, EntityIdEventArgs e)
+        {
+            // Execute right away to look responsive
+            idleTimeSummer.Execute();
         }
 
         void SubscribeToActiveTaskEvents()
         {
             activeTaskController.TaskStarted += HandleTaskStarted;
+            activeTaskController.TaskStopped += HandleTaskStopped;
         }
     }
 }
