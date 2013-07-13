@@ -93,6 +93,7 @@
     <Compile Include="Groups\INewGroupViewModel.cs" />
     <Compile Include="Groups\NewGroupCommand.cs" />
     <Compile Include="Groups\NewGroupViewModel.cs" />
+    <Compile Include="Groups\SampleData\SampleGroupListItemViewModel.cs" />
     <Compile Include="Groups\SampleData\SampleGroupSelectorViewModel.cs" />
     <Compile Include="Groups\SampleData\SampleNewGroupViewModel.cs" />
     <Compile Include="Main\ApplicationCaptionMediator.cs" />

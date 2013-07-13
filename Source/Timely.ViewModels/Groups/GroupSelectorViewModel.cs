@@ -10,10 +10,11 @@
 
     public class GroupSelectorViewModel : ViewModelBase, IGroupSelectorViewModel
     {
-        readonly IGroupsModel groupsModel;
         readonly IGroupListItemViewModelFactory groupListItemViewModelFactory;
+        readonly IGroupsModel groupsModel;
 
-        public GroupSelectorViewModel(IGroupsModel groupsModel, INewGroupCommand newGroupCommand, IGroupListItemViewModelFactory groupListItemViewModelFactory)
+        public GroupSelectorViewModel(
+            IGroupsModel groupsModel, INewGroupCommand newGroupCommand, IGroupListItemViewModelFactory groupListItemViewModelFactory)
         {
             NewGroupCommand = newGroupCommand;
             this.groupsModel = groupsModel;
@@ -26,6 +27,13 @@
         public ObservableCollection<IGroupListItemViewModel> GroupNames { get; private set; }
 
         public ICommand NewGroupCommand { get; private set; }
+
+        public IGroupListItemViewModel SelectedItem { get; set; }
+
+        IGroupListItemViewModel CreateItem(Group group)
+        {
+            return groupListItemViewModelFactory.Create(group);
+        }
 
         void HandleEntityAdded(object sender, EntityEventArgs<Group> e)
         {
@@ -41,11 +49,6 @@
         void PopulateGroupNames()
         {
             GroupNames = new ObservableCollection<IGroupListItemViewModel>(groupsModel.GetAll().Select(CreateItem).OrderBy(i => i.Name));
-        }
-
-        IGroupListItemViewModel CreateItem(Group group)
-        {
-            return groupListItemViewModelFactory.Create(group);
         }
     }
 }

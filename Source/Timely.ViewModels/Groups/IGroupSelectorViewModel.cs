@@ -9,5 +9,7 @@
         ObservableCollection<IGroupListItemViewModel> GroupNames { get; }
 
         ICommand NewGroupCommand { get; }
+
+        IGroupListItemViewModel SelectedItem { get; set; }
     }
 }

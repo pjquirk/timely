@@ -8,11 +8,19 @@
     {
         public SampleGroupSelectorViewModel()
         {
-            GroupNames = new ObservableCollection<IGroupListItemViewModel>();
+            GroupNames = new ObservableCollection<IGroupListItemViewModel>
+                             {
+                                 new SampleGroupListItemViewModel { Name = "Group 1" },
+                                 new SampleGroupListItemViewModel { Name = "Group 2" },
+                                 new SampleGroupListItemViewModel { Name = "Group 3" }
+                             };
+            SelectedItem = GroupNames[1];
         }
 
         public ObservableCollection<IGroupListItemViewModel> GroupNames { get; private set; }
         
         public ICommand NewGroupCommand { get; private set; }
+
+        public IGroupListItemViewModel SelectedItem { get; set; }
     }
 }

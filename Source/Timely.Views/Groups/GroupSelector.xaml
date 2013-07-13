@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:sampleData="clr-namespace:Timely.ViewModels.Groups.SampleData;assembly=Timely.ViewModels"
+             xmlns:groups="clr-namespace:Timely.ViewModels.Groups;assembly=Timely.ViewModels"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=sampleData:SampleGroupSelectorViewModel, IsDesignTimeCreatable=True}"
              d:DesignWidth="300">
@@ -16,7 +17,13 @@
         </Grid.ColumnDefinitions>
         
         <Label Grid.Column="0" Content="Group:" VerticalContentAlignment="Center" />
-        <ComboBox Grid.Column="1" ItemsSource="{Binding GroupNames}" Margin="0,0,10,0" />
+        <ComboBox Grid.Column="1" ItemsSource="{Binding GroupNames}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Margin="0,0,10,0" VerticalContentAlignment="Center">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type groups:GroupListItemViewModel}">
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Button Grid.Column="2" Content="Edit..." Margin="0,0,3,0" Visibility="Collapsed"/>
         <Button Grid.Column="3" Content="New..." Command="{Binding NewGroupCommand}"/>
         
