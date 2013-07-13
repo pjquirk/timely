@@ -1,5 +1,6 @@
 ﻿namespace Timely.ViewModels.Groups
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
@@ -27,6 +28,16 @@
         public ObservableCollection<IGroupListItemViewModel> GroupNames { get; private set; }
 
         public ICommand NewGroupCommand { get; private set; }
+
+        public Guid SelectedGroupId
+        {
+            get
+            {
+                if (SelectedItem != null)
+                    return SelectedItem.Id;
+                return Guid.Empty;
+            }
+        }
 
         public IGroupListItemViewModel SelectedItem { get; set; }
 

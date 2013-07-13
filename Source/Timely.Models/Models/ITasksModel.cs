@@ -7,6 +7,8 @@
     public interface ITasksModel : IEntityModel<Task>
     {
         Task Add(string description);
+        
+        Task Add(string description, Guid groupId);
 
         void SetTaskIndex(Guid id, int index);
     }

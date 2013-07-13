@@ -1,5 +1,6 @@
 ﻿namespace Timely.ViewModels.NewTask
 {
+    using System;
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Timely.Models.Models;
@@ -25,7 +26,8 @@
 
         void CreateTaskExecute()
         {
-            tasksModel.Add(Description);
+            Guid groupId = GroupSelectorViewModel.SelectedGroupId;
+            tasksModel.Add(Description, groupId);
             Close();
         }
     }

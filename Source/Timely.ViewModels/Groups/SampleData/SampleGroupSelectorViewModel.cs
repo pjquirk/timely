@@ -1,5 +1,6 @@
 ﻿namespace Timely.ViewModels.Groups.SampleData
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
     using GalaSoft.MvvmLight;
@@ -18,8 +19,10 @@
         }
 
         public ObservableCollection<IGroupListItemViewModel> GroupNames { get; private set; }
-        
+
         public ICommand NewGroupCommand { get; private set; }
+        
+        public Guid SelectedGroupId { get; private set; }
 
         public IGroupListItemViewModel SelectedItem { get; set; }
     }

@@ -16,7 +16,12 @@
 
         public Task Add(string description)
         {
-            Task task = CreateEntity(description);
+            return Add(description, Guid.Empty);
+        }
+
+        public Task Add(string description, Guid groupId)
+        {
+            Task task = CreateEntity(description, groupId);
             AddToStore(task);
             return task;
         }
@@ -49,10 +54,11 @@
                 t.Index = i++;
         }
 
-        Task CreateEntity(string description)
+        Task CreateEntity(string description, Guid groupId)
         {
             Task task = EntityCreator.Create();
             task.Description = description;
+            task.GroupId = groupId;
             return task;
         }
     }
