@@ -12,6 +12,8 @@
         public ICommand EditSelectedTaskCommand { get; private set; }
         
         public string Group { get; set; }
+        
+        public Guid GroupId { get; private set; }
 
         public string Header { get; set; }
 

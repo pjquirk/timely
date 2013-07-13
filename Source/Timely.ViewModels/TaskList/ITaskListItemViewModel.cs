@@ -12,7 +12,9 @@
         ICommand EditSelectedTaskCommand { get; }
 
         string Group { get; }
-        
+
+        Guid GroupId { get; }
+
         string Header { get; }
 
         Guid Id { get; }
@@ -24,7 +26,7 @@
         ICommand StartSelectedTaskCommand { get; }
 
         ICommand StopSelectedTaskCommand { get; }
-        
+
         TimeSpan TodayTime { get; set; }
 
         TimeSpan TotalTime { get; set; }

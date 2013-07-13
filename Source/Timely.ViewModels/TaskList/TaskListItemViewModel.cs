@@ -12,11 +12,11 @@
         readonly ITaskListViewModel taskListViewModel;
         readonly ITodayTimeSummer todayTimeSummer;
         readonly ITotalTimeSummer totalTimeSummer;
+        string group;
         bool isActive;
         Task task;
         TimeSpan todayTime;
         TimeSpan totalTime;
-        string group;
 
         public TaskListItemViewModel(
             Task task,
@@ -48,7 +48,7 @@
         public string Group
         {
             get { return group; }
-            private set 
+            private set
             {
                 if (group != value)
                 {
@@ -56,6 +56,11 @@
                     RaisePropertyChanged(() => Group);
                 }
             }
+        }
+
+        public Guid GroupId
+        {
+            get { return task.GroupId; }
         }
 
         public string Header

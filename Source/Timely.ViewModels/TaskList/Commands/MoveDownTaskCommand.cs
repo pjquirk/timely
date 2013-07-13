@@ -12,10 +12,12 @@ namespace Timely.ViewModels.TaskList.Commands
 
         public override bool CanExecute(object parameter)
         {
-            int maxIndex = -1;
-            if (TaskListViewModel.Items.Count > 0)
-                maxIndex = TaskListViewModel.Items.Max(t => t.Index);
-            return base.CanExecute(parameter) && SelectedItem.Index < maxIndex;
+            if (SelectedItem != null)
+            {
+                int maxIndex = GetTasksInSelectedTaskGroup().Max(t => t.Index);
+                return base.CanExecute(parameter) && SelectedItem.Index < maxIndex;
+            }
+            return base.CanExecute(parameter);
         }
 
         protected override void ExecuteInternal()

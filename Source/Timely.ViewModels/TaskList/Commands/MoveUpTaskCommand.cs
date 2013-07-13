@@ -1,5 +1,7 @@
 namespace Timely.ViewModels.TaskList.Commands
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Timely.Models.Models;
 
     public class MoveUpTaskCommand : MoveTaskCommand, IMoveUpTaskCommand
@@ -11,7 +13,12 @@ namespace Timely.ViewModels.TaskList.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return base.CanExecute(parameter) && SelectedItem.Index > 0;
+            if (SelectedItem != null)
+            {
+                int minIndex = GetTasksInSelectedTaskGroup().Min(t => t.Index);
+                return base.CanExecute(parameter) && SelectedItem.Index > minIndex;
+            }
+            return base.CanExecute(parameter);
         }
 
         protected override void ExecuteInternal()

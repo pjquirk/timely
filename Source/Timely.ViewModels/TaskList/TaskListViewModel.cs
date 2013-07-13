@@ -139,6 +139,7 @@
                 Task task = tasksModel.Get(e.Entity.Id);
                 item.Update(task);
             }
+            ItemsView.Refresh();
         }
 
         void PopulateItems()

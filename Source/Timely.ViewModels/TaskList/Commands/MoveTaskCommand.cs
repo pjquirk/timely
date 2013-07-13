@@ -1,5 +1,7 @@
 namespace Timely.ViewModels.TaskList.Commands
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Timely.Models.Models;
 
     public abstract class MoveTaskCommand : SelectedItemCommand
@@ -10,6 +12,8 @@ namespace Timely.ViewModels.TaskList.Commands
             TasksModel = tasksModel;
         }
 
+        protected ITasksModel TasksModel { get; private set; }
+
         public override void Execute(object parameter)
         {
             ExecuteInternal();
@@ -18,6 +22,9 @@ namespace Timely.ViewModels.TaskList.Commands
 
         protected abstract void ExecuteInternal();
 
-        protected ITasksModel TasksModel { get; private set; }
+        protected IEnumerable<ITaskListItemViewModel> GetTasksInSelectedTaskGroup()
+        {
+            return TaskListViewModel.Items.Where(t => t.GroupId == SelectedItem.GroupId);
+        }
     }
 }
