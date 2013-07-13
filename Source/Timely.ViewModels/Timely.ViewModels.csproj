@@ -85,7 +85,13 @@
     <Compile Include="EditTask\TimeBlockListItemViewModel.cs" />
     <Compile Include="Groups\GroupSelectorViewModel.cs" />
     <Compile Include="Groups\IGroupSelectorViewModel.cs" />
+    <Compile Include="Groups\INewGroupCommand.cs" />
+    <Compile Include="Groups\INewGroupView.cs" />
+    <Compile Include="Groups\INewGroupViewModel.cs" />
+    <Compile Include="Groups\NewGroupCommand.cs" />
+    <Compile Include="Groups\NewGroupViewModel.cs" />
     <Compile Include="Groups\SampleData\SampleGroupSelectorViewModel.cs" />
+    <Compile Include="Groups\SampleData\SampleNewGroupViewModel.cs" />
     <Compile Include="Main\ApplicationCaptionMediator.cs" />
     <Compile Include="Main\ApplicationLauncher.cs" />
     <Compile Include="Main\IApplicationCaptionMediator.cs" />
