@@ -22,6 +22,16 @@ namespace Timely.ViewModels.TaskList.Commands
 
         protected abstract void ExecuteInternal();
 
+        protected int GetMaxTaskIndexInGroup()
+        {
+            return GetTasksInSelectedTaskGroup().Max(t => t.Index);
+        }
+
+        protected int GetMinTaskIndexInGroup()
+        {
+            return GetTasksInSelectedTaskGroup().Min(t => t.Index);
+        }
+
         protected IEnumerable<ITaskListItemViewModel> GetTasksInSelectedTaskGroup()
         {
             return TaskListViewModel.Items.Where(t => t.GroupId == SelectedItem.GroupId);

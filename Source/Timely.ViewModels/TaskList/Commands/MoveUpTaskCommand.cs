@@ -1,6 +1,5 @@
 namespace Timely.ViewModels.TaskList.Commands
 {
-    using System.Collections.Generic;
     using System.Linq;
     using Timely.Models.Models;
 
@@ -15,7 +14,7 @@ namespace Timely.ViewModels.TaskList.Commands
         {
             if (SelectedItem != null)
             {
-                int minIndex = GetTasksInSelectedTaskGroup().Min(t => t.Index);
+                int minIndex = GetMinTaskIndexInGroup();
                 return base.CanExecute(parameter) && SelectedItem.Index > minIndex;
             }
             return base.CanExecute(parameter);
@@ -23,7 +22,13 @@ namespace Timely.ViewModels.TaskList.Commands
 
         protected override void ExecuteInternal()
         {
-            TasksModel.SetTaskIndex(SelectedItem.Id, SelectedItem.Index - 1);
+            int index = GetNextLowestIndexInGroup(SelectedItem.Index);
+            TasksModel.SetTaskIndex(SelectedItem.Id, index);
+        }
+
+        int GetNextLowestIndexInGroup(int selectedIndex)
+        {
+            return GetTasksInSelectedTaskGroup().Where(t => t.Index < selectedIndex).Max(t => t.Index);
         }
     }
 }
