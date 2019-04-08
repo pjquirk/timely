@@ -28,12 +28,12 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'Source/Timely.Main/bin/$(buildConfiguration)/*'
+    PathtoPublish: 'Source/Timely.Main/bin/$(buildConfiguration)/Timely.Main.exe'
     ArtifactName: 'executable'
 
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'executable-pipelines'
-    targetPath: 'Source/Timely.Main/bin/$(buildConfiguration)/*'
+    targetPath: 'Source/Timely.Main/bin/$(buildConfiguration)/Timely.Main.exe'
 
-#- upload: 'Source/Timely.Main/bin/Release/*.*'
+#- upload: 'Source/Timely.Main/bin/Release/Timely.Main.exe'
