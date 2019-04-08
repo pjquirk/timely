@@ -26,6 +26,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- upload: 
-  - **/bin/*
-  - artifact: executables
+- upload: 'Source/Timely.Main/bin/Release/*'
