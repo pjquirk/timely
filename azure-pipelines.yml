@@ -26,4 +26,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- upload: '**/bin/$(buildConfiguration)'
+- upload: '**/bin/*'
