@@ -26,4 +26,14 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- upload: 'Source/Timely.Main/bin/Release/*.*'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Source/Timely.Main/bin/Release/*.*'
+    ArtifactName: 'executable'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'executable-pipelines'
+    targetPath: 'Source/Timely.Main/bin/Release/*.*'
+
+#- upload: 'Source/Timely.Main/bin/Release/*.*'
