@@ -26,4 +26,4 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- upload: 'Source/Timely.Main/bin/Release/*'
+- upload: 'Source/Timely.Main/bin/Release/*.*'
