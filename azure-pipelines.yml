@@ -26,4 +26,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- upload: '**/bin/*'
+- upload: 
+  - **/bin/*
+  - artifact: executables
