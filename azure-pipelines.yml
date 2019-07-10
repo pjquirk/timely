@@ -34,6 +34,13 @@ steps:
     PathtoPublish: 'Source/Timely.Main/bin/'
     ArtifactName: 'Executable'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Source/Timely.Main/bin/'
+    ArtifactName: 'Executable-filePath'
+    PublishLocation: 'FilePath'
+    TargetPath: 'file:///E:/playground/timely'
+
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'Executable-Pipelines'
