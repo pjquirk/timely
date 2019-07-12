@@ -39,7 +39,7 @@ steps:
     PathtoPublish: 'Source/Timely.Main/bin/'
     ArtifactName: 'Executable-filePath'
     PublishLocation: 'FilePath'
-    TargetPath: 'file:///E:/playground/timely'
+    TargetPath: 'E:/playground/timely'
 
 - task: PublishPipelineArtifact@0
   inputs:
