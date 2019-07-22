@@ -6,10 +6,10 @@
 trigger:
 - master
 
-pool: Default
+# pool: Default
 
-#pool:
-#  vmImage: 'windows-latest'
+pool:
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
